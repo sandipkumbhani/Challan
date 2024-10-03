@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>સરનામું</value>
+  </data>
+  <data name="Agreement of Rent" xml:space="preserve">
+    <value>ભાડાખત કરાર</value>
+  </data>
+  <data name="Agreement to Sale" xml:space="preserve">
+    <value>બાનાખત કરાર</value>
+  </data>
+  <data name="Amount of Conversion Tax" xml:space="preserve">
+    <value>રૂપાંતર વેરાની રકમ</value>
+  </data>
+  <data name="Amount of Proccessing fees" xml:space="preserve">
+    <value>પ્રોસેસીંગ ફી ની રકમ</value>
+  </data>
+  <data name="Application No" xml:space="preserve">
+    <value>એપ્લિકેશન નં</value>
+  </data>
+  <data name="Area of Uncultivated Land" xml:space="preserve">
+    <value>બિનખેતી જમીનનું ક્ષેત્રફળ</value>
+  </data>
+  <data name="Borrower's Email" xml:space="preserve">
+    <value>લેનારાનું ઈમેલ</value>
+  </data>
+  <data name="Borrower's Name" xml:space="preserve">
+    <value>લેનારાનું નામ</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>કેશ</value>
+  </data>
+  <data name="Circle Officer" xml:space="preserve">
+    <value>સર્કલ ઓફિસર</value>
+  </data>
+  <data name="City Survey" xml:space="preserve">
+    <value>સીટી સર્વે</value>
+  </data>
+  <data name="City Talati" xml:space="preserve">
+    <value>સીટી તલાટી</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>પૂર્ણ</value>
+  </data>
+  <data name="Consent document" xml:space="preserve">
+    <value>સંમતિ દસ્તાવેજ</value>
+  </data>
+  <data name="Conversion Tax" xml:space="preserve">
+    <value>રૂપાંતર વેરો</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>તારીખ</value>
+  </data>
+  <data name="Date of letter for payment of Conversion Tax" xml:space="preserve">
+    <value>રૂપાંતર વેરો ભરવા માટેના પત્રની તારીખ</value>
+  </data>
+  <data name="Declaration" xml:space="preserve">
+    <value>ડેક્લેરેશન</value>
+  </data>
+  <data name="Details of Conversion Tax Amount received" xml:space="preserve">
+    <value>રૂપાંતર વેરાની રકમ મળ્યાની વિગત</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>જિલ્લો</value>
+  </data>
+  <data name="Document Details" xml:space="preserve">
+    <value>દસ્તાવેજની વિગત</value>
+  </data>
+  <data name="Document No." xml:space="preserve">
+    <value>દસ્તાવેજ નં.</value>
+  </data>
+  <data name="Document Payment" xml:space="preserve">
+    <value>દસ્તાવેજ પેમેન્ટ</value>
+  </data>
+  <data name="Document Type" xml:space="preserve">
+    <value>દસ્તાવેજનો પ્રકાર</value>
+  </data>
+  <data name="e-Dhara Center" xml:space="preserve">
+    <value>ઈ-ધરા કેન્દ્ર</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ઈમેલ</value>
+  </data>
+  <data name="Entry Details in Revenue Record" xml:space="preserve">
+    <value>રેવન્યુ રેકોર્ડમાં એન્ટ્રીની વિગત</value>
+  </data>
+  <data name="Gift" xml:space="preserve">
+    <value>બક્ષીસ</value>
+  </data>
+  <data name="Gram Panchayat" xml:space="preserve">
+    <value>ગ્રામ પંચાયત</value>
+  </data>
+  <data name="Layout" xml:space="preserve">
+    <value>લે આઉટ</value>
+  </data>
+  <data name="Mail Instred into the Application" xml:space="preserve">
+    <value>એપ્લિકેશનમાં નાખવામાં આવેલ મેઈલ</value>
+  </data>
+  <data name="Mamlatdar" xml:space="preserve">
+    <value>મામલતદાર</value>
+  </data>
+  <data name="Measured or not" xml:space="preserve">
+    <value>માપણી થયેલ છે કે નહી</value>
+  </data>
+  <data name="Measurement Application" xml:space="preserve">
+    <value>માપણી અરજી</value>
+  </data>
+  <data name="Measurement Application Number" xml:space="preserve">
+    <value>માપણી અરજી નંબર</value>
+  </data>
+  <data name="Mobile Number" xml:space="preserve">
+    <value>મોબાઈલ નંબર</value>
+  </data>
+  <data name="Mobile Number Instred into the Application" xml:space="preserve">
+    <value>એપ્લિકેશનમાં નાખવામાં આવેલ મોબાઈલ નંબર</value>
+  </data>
+  <data name="Mortgage Deed" xml:space="preserve">
+    <value>મોર્ટગેજ ડીડ</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>નામ</value>
+  </data>
+  <data name="Note Number" xml:space="preserve">
+    <value>નોંધ નંબર</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>ઓકે</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>ઓનલાઈન</value>
+  </data>
+  <data name="Opinion" xml:space="preserve">
+    <value>અભિપ્રાય</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>અન્ય</value>
+  </data>
+  <data name="Other(if any)" xml:space="preserve">
+    <value>અન્ય(જો હોય તો)</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>પાસવર્ડ</value>
+  </data>
+  <data name="Payment Receipt" xml:space="preserve">
+    <value>ચુકવણી રસીદ</value>
+  </data>
+  <data name="Pending" xml:space="preserve">
+    <value>પેન્ડિંગ</value>
+  </data>
+  <data name="Property Details" xml:space="preserve">
+    <value>મિલકતની વિગત</value>
+  </data>
+  <data name="Reference Number for payment of Conversion Tax" xml:space="preserve">
+    <value>રૂપાંતર વેરો ભર્યા અંગેનો રેફરન્સ નંબર</value>
+  </data>
+  <data name="Reference Number for payment of Measurement Fees" xml:space="preserve">
+    <value>માપણી ફી ભર્યાનો રેફરન્સ નંબર</value>
+  </data>
+  <data name="Reference Number for payment of Proccessing Fees" xml:space="preserve">
+    <value>પ્રોસેસીંગ ફી ભર્યાનો રેફરન્સ નંબર</value>
+  </data>
+  <data name="Release Deed" xml:space="preserve">
+    <value>ફારગતી દસ્તાવેજ</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>બાકી</value>
+  </data>
+  <data name="Sales document" xml:space="preserve">
+    <value>વેચાણ દસ્તાવેજ</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>પસંદ કરો</value>
+  </data>
+  <data name="Seller's Name" xml:space="preserve">
+    <value>વેચનાર નુ નામ</value>
+  </data>
+  <data name="Survey Number" xml:space="preserve">
+    <value>સર્વે નંબર</value>
+  </data>
+  <data name="Taluka" xml:space="preserve">
+    <value>તાલુકો</value>
+  </data>
+  <data name="Uncultivated Application" xml:space="preserve">
+    <value>બિનખેતી અરજી</value>
+  </data>
+  <data name="Village" xml:space="preserve">
+    <value>ગામ</value>
+  </data>
+</root>

@@ -1,0 +1,147 @@
+﻿
+@model Dictionary<string,string>
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+   
+    ViewBag.Title = "create Employee";
+}
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+    </head>
+    <body>
+    <div class="" style="display:flex; margin-left:1182px;">
+        <div class="form-check">
+            <a class="link" for="flexRadioDefault1" asp-controller="home" asp-action="ChangeLanguage" asp-route-lang="en">
+                <input class="" onclick='location.href="/Home/ChangeLanguage?lang=en";' type="radio" name="flexRadioDefault" id="flexRadioDefault1" @(Thread.CurrentThread.CurrentUICulture.ToString() == "en" ? "checked" : "")>English
+            </a>
+        </div>
+        <div class="form-check" style="margin-left:-50px;">
+
+            <a class="link" for="flexRadioDefault2" asp-controller="home" asp-action="ChangeLanguage" asp-route-lang="gj">
+                <input class="" onclick='location.href="/Home/ChangeLanguage?lang=gj";' type="radio" name="flexRadioDefault" id="flexRadioDefault2" @(Thread.CurrentThread.CurrentUICulture.ToString() == "gj" ? "checked" : "")>Gujarati
+            </a>
+            
+        </div>
+    </div>
+        <form method="post" asp-action="AddEmployee" asp-controller="home">
+
+        <div class="card welcard">
+            <div class="card-body cardmrg">
+                     <h3 class="title">Welcome</h3>
+                        <div class="mb-3-row ">
+                            <div class="mb-3-city">
+                                <label for="Name" name="Name" class="form-label">@Model["Name"]</label>
+                                <input class="field" name="Name" id="name">
+                            </div>
+                        </div>
+                        <div class="mb-3-row">
+                            <div class="mb-3-city">
+                                <label for="Email" name="Email" class="form-label">@Model["Email"]</label>
+                                 <input class="field" name="Email" id="email">
+                            </div>
+                        </div>
+                        <div class="mb-3-row">
+                            <div class="mb-3-city">
+                                <label for="Address" name="Address" class="form-label">@Model["Address"]</label>
+                                <input class="field" name="Address" id="address">
+                            </div>
+                        </div>
+                <button type="submit" class="btn btn-primary bmrg " style="width:100px;" id="btnsaveandnew">Submit</button>
+            </div>
+          </div>
+       </form>
+                 
+        
+    @* <div>
+
+            <input type="text" class="field" id="fieldval">
+
+        </div> *@
+            @* <div class="fld">
+            <label asp-for="@Model.Keys.ToString() == "Address" class="lbl">@Model.Values.ToString()</label>
+                <div class="col-sm-3 m-2">
+                <input asp-for="@Model.Values" class="field">
+                    
+                </div>
+            </div> *@
+
+        @* <div class="fld">
+            <label asp-for="Email" class="lbl"></label>
+            <div class="col-sm-3 m-2">
+                <input asp-for="Email" class="field">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="fld">
+            <label asp-for="Address"  class="lbl"></label>
+            <div class="col-sm-3 m-2">
+                <input asp-for="Address" class="field">
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div> *@
+
+    @* <div class="">
+        <div class="fld">
+
+
+            <div class="inpt">
+                <input type="text" name="Name" id="nm" class="field" /><br />
+                <input type="Email" name="Email" id="mail" class="field" /><br />
+                <input type="text" name="Address" id="addr" class="field" /><br />
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn">Submit</button>
+        </div>
+
+    </div> *@
+
+</body>
+                   @* <script>
+                    $(document).ready(function () {
+                            $("#btnsubmit").click(function (e) {
+                            e.preventDefault();
+                                var model = {
+                                    value: $("#fieldval").val(),
+                                    
+                                }
+                                    console.log(model);
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/Home/Employee",
+                                    //contentType: "application/json",
+                                    data: model;
+                                    //dataType: "json",
+                                    success: function (result) {
+
+                                        if (result.result == "success") {
+
+                                            $("#dataDiv").html("Item saved successfully!");
+                                           
+                                        } else {
+
+                                            $("#dataDiv").html("Failed to save Item.");
+                                        }
+                                    },
+                                    error: function (xhr, status, error) {
+                                        $("#dataDiv").html("Error: " + status + " " + error + " " + xhr.status + " " + xhr.statusText);
+                                    }
+                                });
+                   </script> *@
+</html>

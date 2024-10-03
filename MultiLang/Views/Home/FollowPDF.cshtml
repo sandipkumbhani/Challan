@@ -1,0 +1,112 @@
+﻿@model ResourceDocumentViewModel
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "PDF";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="StyleSheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+       
+        <div class="m-5">
+            <div class="row">
+                 &nbsp;
+            </div>
+            <div class="row">
+                 &nbsp;
+            </div>
+            <div class="row">
+                &nbsp;
+            </div>
+            <div class="row">
+                <p>@Model.Resource["Document No."]  :  @Model.Document.DocumentNo</p>
+            </div>
+            <div class="row">
+                <p>@Model.Resource["Borrower's Name"] : @Model.Document.BorrowersName</p>
+            </div>
+        <div class="row">
+            <p>@Model.Resource["Borrower's Email"] : @Model.Document.BorrowerEmail</p>
+        </div>
+            <div class="row">
+                <p>@Model.Resource["Seller's Name"] : @Model.Document.SellersName</p>
+            </div>
+
+            <div class="row">
+                <p>@Model.Resource["Document Type"] : @Model.Document.DocumentType</p>
+            </div>
+            <div class="row">
+                <p>@Model.Resource["Property Details"] : @Model.Document.PropertyDetails</p>
+            </div>
+
+            <div class="row">
+                <p>@Model.Resource["Entry Details in Revenue Record"]</p>
+            </div>
+            <div class="innerdata">
+                <div class="row">
+                    <p>
+                        @Model.Resource["e-Dhara Center"] : @Model.Document.EDharaCenter &nbsp;&nbsp;&nbsp;
+                        @Model.Resource["Note Number"] : @Model.Document.DharaCenterNo  &nbsp;&nbsp;&nbsp;
+                        @Model.Document.DharaCenter
+                    </p>
+                </div>
+                <div class="row">
+                    <p>
+                        @Model.Resource["City Survey"]   &nbsp;&nbsp;&nbsp;
+                        @Model.Resource["Note Number"] : @Model.Document.CitySurveyNo  &nbsp;&nbsp;&nbsp;
+                        @Model.Document.CitySurvey
+                    </p>
+                </div>
+                <div class="row">
+                    <p>
+                        @Model.Resource["City Talati"]   &nbsp;&nbsp;&nbsp;
+                        @Model.Document.CityTalati
+                    </p>
+                </div>
+                <div class="row">
+                    <p>
+                        @Model.Resource["Gram Panchayat"]   &nbsp;&nbsp;&nbsp;
+                        @Model.Document.GramPanchayat
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <p>
+                    @Model.Resource["Document Payment"]   &nbsp;&nbsp;&nbsp;
+                    @Model.Document.DocumentPayment
+                </p>
+            </div>
+        </div>
+    
+    
+    @* <div class="container">
+        <div class="row mb-4">
+            <div class="col">@Model.Resource["Document No."] : @Model.Document.DocumentNo</div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">@Model.Resource["Borrower's Name"] : @Model.Document.BorrowersName</div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">@Model.Resource["Seller's Name"]:@Model.Document.SellersName</div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">@Model.Resource["Document Type"]:@Model.Document.DocumentType</div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">@Model.Resource["Property Details"]:@Model.Document.PropertyDetails</div>
+        </div>
+    </div> *@
+</body>
+</html>
