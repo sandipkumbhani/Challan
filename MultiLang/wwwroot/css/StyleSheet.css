@@ -1,0 +1,166 @@
+﻿body {
+    font-size: small !important;
+}
+
+.cardmrg {
+}
+.rightSide {
+    margin-left: 300px;
+    margin-top: -570px;
+}
+
+.headings {
+    border: 1px solid #d2dbe4;
+    border-radius: 5px;
+    width: 1050px;
+    height: 40px;
+    margin-left: -20px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+}
+.rights {
+    margin-left: 300px;
+    margin-top: -570px;
+}
+* {
+    text-decoration: none;
+}
+
+form {
+    position: absolute;
+    margin: 20px 0px 1px 300px;
+}
+
+.form-label {
+    margin-bottom: 2px !important;
+}
+.form-control, .form-select {
+    margin-bottom: 0.5rem !important;
+
+}
+   
+    .field {
+    margin-left: 7px;
+    margin-top: 30px;
+    width: 280px;
+    height: 40px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}
+.form-check {
+    padding-left: 1em !important;
+}
+    .inpt {
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-top: -180px;
+}
+
+.btnsub {
+    width: 100px;
+}
+
+.title {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 40px;
+    color: dimgray;
+}
+
+ul {
+    display: flex;
+    color: black;
+}
+
+    ul li {
+        list-style-type: none;
+        font-size: small;
+    }
+
+.link {
+    text-decoration: none;
+    margin-left: 20px;
+    color: black;
+}
+
+.rdo {
+    margin-left: -100px;
+}
+
+.fld {
+    display: flex;
+}
+
+.lbl {
+    margin-top: 37px;
+    font-size: large;
+}
+
+.bmrg {
+    margin-top: 50px;
+    margin-left: 120px;
+}
+
+.ipt {
+    width: 500px;
+}
+
+.mrg {
+    margin-left: -150px;
+}
+
+.crd {
+    margin-right: 290px;
+    margin-left: -120px;
+}
+
+.rado {
+    display: block;
+}
+
+.welcard {
+    margin-right: 100px;
+    margin-left: 130px;
+}
+
+.row {
+    display: flex;
+    margin-top: 20px;
+}
+
+.rows {
+    margin-top: 20px;
+}
+
+p {
+    font-size: 24px;
+}
+
+.pdfdata {
+    margin-top: 50px;
+}
+
+.innerdata {
+    margin-left: 60px;
+}
+
+.navlink {
+    color: black;
+    text-decoration: none;
+}
+
+.navlink:hover {
+    background-color: royalblue;
+}
+.form-select{
+    font-size: small !important;
+}
+.upload {
+    height: 33px !important;
+    border: 1px solid lightgray !important;
+    font-size: small !important;
+    margin-left: 5px;
+}
+.smallsize {
+    font-size:small !important;
+}

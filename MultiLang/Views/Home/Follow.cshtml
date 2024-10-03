@@ -1,0 +1,325 @@
+﻿@model ResourceDocumentViewModel
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+
+    ViewBag.Title = "Follow";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="StyleSheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="" style="display:flex; margin-left:1172px;">
+        <div class="form-check">
+            <a class="link" for="flexRadioDefault1" asp-controller="home" asp-action="ChangeLanguage" asp-route-lang="en">
+                <input class="" onclick='location.href="/Home/ChangeLanguage?lang=en";' type="radio" name="flexRadioDefault" id="flexRadioDefault1" @(Thread.CurrentThread.CurrentUICulture.ToString() == "en" ? "checked" : "")>English
+            </a>
+        </div>
+        <div class="form-check" style="margin-left:-46px;">
+
+            <a class="link" for="flexRadioDefault2" asp-controller="home" asp-action="ChangeLanguage" asp-route-lang="gj">
+                <input class="" onclick='location.href="/Home/ChangeLanguage?lang=gj";' type="radio" name="flexRadioDefault" id="flexRadioDefault2" @(Thread.CurrentThread.CurrentUICulture.ToString() == "gj" ? "checked" : "")>Gujarati
+            </a>
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top: -30px;">
+        <div class="row flex-nowrap">
+            <div class="d-flex flex-column  flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;height:600px;">
+                <a href="https://localhost:7037/home/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    
+                    <span class="fs-4">CHALAN Reminder</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="https://localhost:7037/home/GetDocumentDtl" class="nav-link active" aria-current="page">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                            <i class="fa-solid fa-user-plus fa-xl" style="color: #ffffff;margin-right: 0.7rem;"></i></i>Follow
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://localhost:7037/home/GetQuotationlDtl" class="nav-link link-body-emphasis">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                            <i class="fa-solid fa-quote-right fa-xl" style="color: #000000;margin-right: 0.7rem;"></i>Quotation
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://localhost:7037/home/AddUser" class="nav-link link-body-emphasis">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                            <i class="fa-solid fa-user fa-xl" style="color: #050505;margin-right: 0.7rem;"></i>Add User
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="rightSide">
+        <header>
+            <h4 style="padding: 1px;">
+                Follow
+            </h4>
+        </header>
+        <div class="page">
+
+            <form method="post"   enctype="multipart/form-data">
+                <div class="card crd" style="margin-right:120px;margin-left:-305px;margin-top:-20px;">
+                        
+                    <div class="card-body cardmrg">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="DocumentNo" class="form-label">@Model.Resource["Document No."]</label>
+                                <input type="text" class="form-control" id="documentno" name="DocumentNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.DocumentNo.ToString() : "")">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="Date" class="form-label">@Model.Resource["Date"]</label>
+                                <input type="text" class="form-control" id="date" name="Date" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.Date : "")">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="BorrowersName" class="form-label">@Model.Resource["Borrower's Name"]</label>
+                                <input type="text" class="form-control" id="borrowersName" name="BorrowersName" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.BorrowersName : "")">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="BorrowerEmail" class="form-label">@Model.Resource["Borrower's Email"]</label>
+                                <input type="text" class="form-control" id="BorrowerEmail" name="BorrowerEmail" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.BorrowerEmail : "")">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="SellersName" class="form-label">@Model.Resource["Seller's Name"]</label>
+                                <input type="text" class="form-control" id="sellersName" name="SellersName" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.SellersName : "")">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="DocumentType" class="form-label">@Model.Resource["Document Type"]</label>
+                                <div class="input-group-sm">
+                                    <label for="DocumentType"></label>
+                                    <select class="form-select" style="height: 39px;margin-top: -18px;font-size:small;" id="DocumentType" name="DocumentType" >
+                                        @if(Model.Document != null && Model.Document.Id != 0)
+                                        {
+                                            <option value="@Model.Document.DocumentType" selected>@Model.Document.DocumentType </option>
+                                            <option value="@Model.Resource["Sales document"]">@Model.Resource["Sales document"]</option>
+                                            <option value="@Model.Resource["Release Deed"]">@Model.Resource["Release Deed"]</option>
+                                            <option value="@Model.Resource["Agreement of Rent"]">@Model.Resource["Agreement of Rent"]</option>
+                                            <option value="@Model.Resource["Mortgage Deed"]">@Model.Resource["Mortgage Deed"]</option>
+                                            <option value="@Model.Resource["Agreement to Sale"]">@Model.Resource["Agreement to Sale"]</option>
+                                            <option value="@Model.Resource["Gift"]">@Model.Resource["Gift"]</option>
+                                            <option value="@Model.Resource["Consent document"]">@Model.Resource["Consent document"]</option>
+                                            <option value="@Model.Resource["Declaration"]">@Model.Resource["Declaration"]</option>
+                                            <option value="@Model.Resource["Other"]">@Model.Resource["Other"]</option>
+                                        }
+                                        else
+                                        {
+                                            <option selected>@Model.Resource["Select"] </option>
+                                            <option value="@Model.Resource["Sales document"]">@Model.Resource["Sales document"]</option>
+                                            <option value="@Model.Resource["Release Deed"]">@Model.Resource["Release Deed"]</option>
+                                            <option value="@Model.Resource["Agreement of Rent"]">@Model.Resource["Agreement of Rent"]</option>
+                                            <option value="@Model.Resource["Mortgage Deed"]">@Model.Resource["Mortgage Deed"]</option>
+                                            <option value="@Model.Resource["Agreement to Sale"]">@Model.Resource["Agreement to Sale"]</option>
+                                            <option value="@Model.Resource["Gift"]">@Model.Resource["Gift"]</option>
+                                            <option value="@Model.Resource["Consent document"]">@Model.Resource["Consent document"]</option>
+                                            <option value="@Model.Resource["Declaration"]">@Model.Resource["Declaration"]</option>
+                                            <option value="@Model.Resource["Other"]">@Model.Resource["Other"]</option>
+                                        }
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="PropertyDetails" class="form-label">@Model.Resource["Property Details"]</label>
+                                <input type="text" class="form-control" id="PropertyDetails" name="PropertyDetails" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.PropertyDetails : "")">
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 20px;border-top: 1px solid #afafaf;font-weight: bold;">
+                            <label for="" class="form-label fs-6">@Model.Resource["Entry Details in Revenue Record"]</label>
+                            <br /><br />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" style="margin-left:20px">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="EDharaCenter" class="form-label">@Model.Resource["e-Dhara Center"]</label>
+                                        <input type="text" class="form-control" id="EDharaCenter" name="EDharaCenter" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.EDharaCenter : "")">
+                                    </div>
+
+                                    <div class="col-md-3 ">
+                                        <label for="DharaCenterNo" class="form-label">@Model.Resource["Note Number"]</label>
+                                        <input type="text" class="form-control" id="DharaCenterNo" name="DharaCenterNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.DharaCenterNo : "")">
+                                    </div>
+
+                                    <div class="col m-3">
+                                        <div class="rado" style="display:flex; margin-top:30px;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="DharaCenter" value="@Model.Resource["Complete"]" id="DharaCenter1">
+                                                <label class="form-check-label" for="ActCenter1">
+                                                    @Model.Resource["Complete"]
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="DharaCenter" value="@Model.Resource["Remaining"]" id="DharaCenter2">
+                                                <label class="form-check-label" for="DharaCenter2">
+                                                    @Model.Resource["Remaining"]
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label class="form-label">@Model.Resource["City Survey"]</label>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="CitySurveyNo" class="form-label">@Model.Resource["Note Number"]</label>
+                                        <input type="text" class="form-control" id="CitySurveyNo" name="CitySurveyNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.CitySurveyNo : "")">
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="rado" style="display:flex; margin-top:30px;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="CitySurvey" value="@Model.Resource["Complete"]" id="CitySurvey1">
+                                                <label class="form-check-label" for="CitySurvey1">
+                                                    @Model.Resource["Complete"]
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="CitySurvey" value="@Model.Resource["Remaining"]" id="CitySurvey2">
+                                                <label class="form-check-label" for="CitySurvey2">
+                                                    @Model.Resource["Remaining"]
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label class="form-label">@Model.Resource["City Talati"]</label>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="rado" style="display:flex;">
+                                            <div class="form-check ">
+                                                <input class="form-check-input" type="radio" name="CityTalati" value="@Model.Resource["Complete"]" id="CityTalati1">
+                                                <label class="form-check-label" for="CityTalati1">
+                                                    @Model.Resource["Complete"]
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="CityTalati" value="@Model.Resource["Remaining"]" id="CityTalati2">
+                                                <label class="form-check-label" for="CityTalati2">
+                                                    @Model.Resource["Remaining"]
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label class="form-label">@Model.Resource["Gram Panchayat"]</label>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="rado" style="display:flex;">
+                                            <div class="form-check ">
+                                                <input class="form-check-input" type="radio" name="GramPanchayat" value="@Model.Resource["Complete"]" id="GramPanchayat1">
+                                                <label class="form-check-label" for="GramPanchayat1">
+                                                    @Model.Resource["Complete"]
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="GramPanchayat" value="@Model.Resource["Remaining"]" id="GramPanchayat2">
+                                                <label class="form-check-label" for="GramPanchayat2">
+                                                    @Model.Resource["Remaining"]
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">&nbsp;</div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="form-label">@Model.Resource["Document Payment"]</label>
+                            </div>
+
+                            <div class="col">
+                                <div class="rado" style="display:flex;margin-left:-32px">
+                                    <div class="form-check ">
+                                        <input class="form-check-input" type="radio" name="DocumentPayment" value="@Model.Resource["Complete"]" id="DocumentPayment1">
+                                        <label class="form-check-label" for="DocumentPayment1">
+                                            @Model.Resource["Complete"]
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="DocumentPayment" value="@Model.Resource["Remaining"]" id="DocumentPayment2">
+                                        <label class="form-check-label" for="DocumentPayment2">
+                                            @Model.Resource["Remaining"]
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="file" class="form-label">@Model.Resource["Payment Receipt"]</label>
+                            </div>
+                            <div class="col-md-6" style="display:flex;margin-left:-40px">
+                                <input class="form-control form-control-sm" id="file" name="file" type="file">
+                                <input type="hidden" name="foreignKeyId" value="" /> 
+                                <input type="hidden" name="sourceType" value="Follow" />  
+                                <button asp-action="UploadFile" asp-controller="home" type="submit" class="btn btn-light upload" style="width:100px;">Upload</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(Model.Document !=null && Model.Document.Id != 0)
+                                {
+                                    <button asp-action="EditFollow"  asp-controller="Home" type="submit" class="btn btn-primary mt-4" style="width:100px;">Update</button>
+                                }
+                                else
+                                {
+                                    <button asp-action="AddDocument" asp-controller="Home" type="submit" class="btn btn-primary mt-4" style="width:100px;">Submit</button>
+                                }
+                                <a asp-action="GetDocumentDtl" asp-controller="home" class="btn btn-primary mt-4 mx-3" style="width:100px;">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

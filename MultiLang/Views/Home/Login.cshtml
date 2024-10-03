@@ -1,0 +1,60 @@
+﻿@model Dictionary<string,string>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+
+    ViewBag.Title = "Login";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="StyleSheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="" style="display:flex; margin-left:1172px;">
+        <div class="form-check">
+            <a class="link" for="flexRadioDefault1" asp-controller="home" asp-action="ChangeLanguage" asp-route-lang="en">
+            <input class="" onclick='location.href="/Home/ChangeLanguage?lang=en";' type="radio" name="flexRadioDefault" id="flexRadioDefault1" @(Thread.CurrentThread.CurrentUICulture.ToString() == "en" ? "checked" : "")>English
+            </a>
+        </div>
+        <div class="form-check" style="margin-left:-46px;">
+
+            <a class="link" for="flexRadioDefault2" asp-controller="home" asp-action="ChangeLanguage" asp-route-lang="gj">
+            <input class="" onclick='location.href="/Home/ChangeLanguage?lang=gj";' type="radio" name="flexRadioDefault" id="flexRadioDefault2" @(Thread.CurrentThread.CurrentUICulture.ToString() == "gj" ? "checked" : "")>Gujarati
+            </a>
+        </div>
+    </div>
+    <form method="post" asp-action="Login" asp-controller="home">
+        <div class="card crd" style="margin-left:190px;margin-top:40px;">
+            <div class="card-body" style="margin:5px 50px 10px 50px;">
+                <h3 class="title">Login</h3>
+                
+                <div class="row">
+                    <div class="col">
+                        <label for="Email" name="Email" class="form-label">@Model["Email"]</label>
+                        <input type="text" class="form-control" id="Email" name="Email">
+                    </div>
+                </div>
+                <div class="mb-3-row">
+                    <div class="mb-3-city">
+                        <label for="Password" name="Password" class="form-label">@Model["Password"]</label>
+                        <input class="form-control" name="Password" id="Password">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary bmrg " style="width:100px;margin-left:50px;" id="btnsaveandnew">Login</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

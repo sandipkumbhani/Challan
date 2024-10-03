@@ -1,0 +1,136 @@
+﻿@model ResorcesQuotationViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "PDF";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="StyleSheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="m-5">
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Name"]  :  @Model.Quotaion.Name</p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Village"]  :  @Model.Quotaion.Village  &nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Resource["Taluka"]  :  @Model.Quotaion.Taluka  &nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Resource["District"]  :  @Model.Quotaion.District
+            </p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Survey Number"]  :  @Model.Quotaion.SurveyNo</p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Area of Uncultivated Land"]  :  @Model.Quotaion.LandArea</p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Mobile Number"]  :  @Model.Quotaion.MobileNo</p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Application No"]  :  @Model.Quotaion.ApplicationNo   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Resource["Date"]  :  @Model.Quotaion.App_Date</p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Mail Instred into the Application"]  :  @Model.Quotaion.Email</p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Mobile Number Instred into the Application"]  :  @Model.Quotaion.App_mobileNo</p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Amount of Proccessing fees"]  :  @Model.Quotaion.ProcessFees</p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Reference Number for payment of Proccessing Fees"]  :  @Model.Quotaion.Pro_Refe_no   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Resource["Date"]  :  @Model.Quotaion.Pro_Date
+            </p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Measurement Application Number"]  :  @Model.Quotaion.MeasurementNo</p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Reference Number for payment of Measurement Fees"]  :  @Model.Quotaion.Measur_Refe_No   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Resource["Date"]  :  @Model.Quotaion.Measur_Date
+            </p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Measured or not"]  :  @Model.Quotaion.MeasurOrNot</p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Opinion"]  :  @Model.Quotaion.Opinion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Resource["Circle Officer"]  :  @Model.Quotaion.CircleOfficer
+            </p>
+           <div style="margin-left:220px;">
+                <p>@Model.Resource["Mamlatdar"]  :  @Model.Quotaion.Mamlatdar</p>
+                <p>@Model.Resource["Other(if any)"]  :  @Model.Quotaion.Other</p>
+           </div>
+        </div>
+
+        <div class="rows">
+            <p>@Model.Resource["Date of letter for payment of Conversion Tax"]  :  @Model.Quotaion.Con_letter_Date</p>
+        </div>
+        <div class="rows">
+            <p>@Model.Resource["Amount of Conversion Tax"]  :  @Model.Quotaion.Con_Amount</p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Reference Number for payment of Conversion Tax"]  :  @Model.Quotaion.Con_Refe_No  &nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Resource["Date"]  :  @Model.Quotaion.Con_Date
+            </p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Details of Conversion Tax Amount received"] :  @Model.Quotaion.Con_Amount_Dtl
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @Model.Resource["Date"]  :  @Model.Quotaion.Amount_Dtl_Date
+            </p>
+        </div>
+
+        <div class="rows">
+            <p>
+                @Model.Resource["Layout"] : @Model.Quotaion.layout
+            </p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Uncultivated Application"] : @Model.Quotaion.uncultivat_appli
+            </p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Measurement Application"] : @Model.Quotaion.Measurment_appli
+
+            </p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Conversion Tax"] :  @Model.Quotaion.ConversionTax
+            </p>
+        </div>
+        <div class="rows">
+            <p>
+                @Model.Resource["Layout"] :  @Model.Quotaion.lay_out
+            </p>
+        </div>
+    </div>
+</body>
+</html>
