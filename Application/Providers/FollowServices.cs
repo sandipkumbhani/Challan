@@ -21,9 +21,16 @@ namespace Application.Providers
             return _documentRepo.AddDocumentDtl(model);
         }
 
-        public DocumentViewModel Delete(int id)
+        public int Delete(int id)
         {
-            return _documentRepo.DeleteFollow(id);
+            var res = _documentRepo.GetDocument(id);
+            if(res != null)
+            {
+                res.StatusId = 0;
+                _documentRepo.DeleteFollow(res);
+                return 1;
+            }
+            return 0;
         }
 
         public DocumentViewModel Edit(DocumentViewModel model)

@@ -66,8 +66,8 @@
         </div>
     </div>
     <div class="rightSide">
-        <div class="container">
-            <header class="headings">
+        <div >
+            <header >
                 <h4 style="padding:5px;">
                     Quotation
                 </h4>
@@ -84,6 +84,7 @@
                     <th class="">Date</th>
                     <th class="">Download PDF</th>
                     <th class="">Edit</th>
+                    <th class="">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -94,7 +95,8 @@
                         <td>@dtl.Name</td>
                         <td>@dtl.App_Date</td>
                         <td><a asp-action="QuotationPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">Download  <i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
-                        <td><a asp-action="Quotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
+                        <td><a asp-action="Quotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
+                        <td><a asp-action="DeleteQuotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-danger" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></a></td>
                     </tr>
                 }
             </tbody>

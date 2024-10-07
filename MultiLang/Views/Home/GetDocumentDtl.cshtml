@@ -79,6 +79,15 @@
         <a asp-action="Follow" asp-controller="home"><button class="btn btn-primary" style="font-size:small;">ADD <i class="fa-solid fa-plus" style="color: #ffffff;"></i></button></a>
         <a asp-action="DueDateFollowDtl" asp-controller="home"><button class="btn btn-primary" style="font-size:small;">Show DueDate  <i class="fa-solid fa-filter" style="color: #ffffff;"></i></button></a>
         <a asp-action="GetDocumentDtl" asp-controller="home"><button class="btn btn-primary" style="width:70px;font-size:small;">All</button></a>
+
+         <div class="row">
+             <div class="col-md-2">
+                 <div class="form-inline smallsize">
+                    <input type="text" class="form-control smallsize" id="searchtext" placeholder="Search.." style="margin:10px 0px -10px 0px;">
+                 </div>
+             </div>
+         </div>
+            <div id="getdetails"></div>
             <table class="table table-borded">
                 <thead>
                     <tr>
@@ -98,12 +107,36 @@
                         <td>@dtl.DocumentType</td>
                         <td>@dtl.Date</td>
                         <td><a asp-action="FollowPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">Download  <i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
-                        <td><a asp-action="Follow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
+                        <td><a asp-action="Follow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="DelFollow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-danger" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></a></td>
                         </tr>
                     }
                 </tbody>
             </table>
     </div>
+    <script>
+        $(() => {
+            getDetail();
+
+            $('#getdetails').on('keyup', () => {
+                getDetail();
+            });
+        });
+        function getDetail()
+        {
+            $.ajax({
+                url: 'url.Action("search","home")',
+                datatype:'html',
+                method:'GET',
+                data: { searchtext: $('#searchtext').val() },
+                success:function(result){
+                    $('#getdetails').html('').html(res);
+                },  
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+    </script>
 </body>
 </html>

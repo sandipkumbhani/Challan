@@ -83,30 +83,30 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="DocumentNo" class="form-label">@Model.Resource["Document No."]</label>
-                                <input type="text" class="form-control" id="documentno" name="DocumentNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.DocumentNo.ToString() : "")">
+                                <input type="text" class="form-control smallsize" id="documentno" name="DocumentNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.DocumentNo.ToString() : "")">
                             </div>
 
                             <div class="col-md-6">
                                 <label for="Date" class="form-label">@Model.Resource["Date"]</label>
-                                <input type="text" class="form-control" id="date" name="Date" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.Date : "")">
+                                <input type="text" class="form-control smallsize" id="date" name="Date" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.Date : "")">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="BorrowersName" class="form-label">@Model.Resource["Borrower's Name"]</label>
-                                <input type="text" class="form-control" id="borrowersName" name="BorrowersName" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.BorrowersName : "")">
+                                <input type="text" class="form-control smallsize" id="borrowersName" name="BorrowersName" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.BorrowersName : "")">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="BorrowerEmail" class="form-label">@Model.Resource["Borrower's Email"]</label>
-                                <input type="text" class="form-control" id="BorrowerEmail" name="BorrowerEmail" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.BorrowerEmail : "")">
+                                <input type="text" class="form-control smallsize" id="BorrowerEmail" name="BorrowerEmail" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.BorrowerEmail : "")">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="SellersName" class="form-label">@Model.Resource["Seller's Name"]</label>
-                                <input type="text" class="form-control" id="sellersName" name="SellersName" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.SellersName : "")">
+                                <input type="text" class="form-control smallsize" id="sellersName" name="SellersName" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.SellersName : "")">
                             </div>
                         </div>
 
@@ -115,7 +115,7 @@
                                 <label for="DocumentType" class="form-label">@Model.Resource["Document Type"]</label>
                                 <div class="input-group-sm">
                                     <label for="DocumentType"></label>
-                                    <select class="form-select" style="height: 39px;margin-top: -18px;font-size:small;" id="DocumentType" name="DocumentType" >
+                                    <select class="form-select smallsize" style="height: 39px;margin-top: -18px;font-size:small;" id="DocumentType" name="DocumentType">
                                         @if(Model.Document != null && Model.Document.Id != 0)
                                         {
                                             <option value="@Model.Document.DocumentType" selected>@Model.Document.DocumentType </option>
@@ -151,7 +151,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="PropertyDetails" class="form-label">@Model.Resource["Property Details"]</label>
-                                <input type="text" class="form-control" id="PropertyDetails" name="PropertyDetails" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.PropertyDetails : "")">
+                                <input type="text" class="form-control smallsize" id="PropertyDetails" name="PropertyDetails" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.PropertyDetails : "")">
                             </div>
                         </div>
 
@@ -164,12 +164,12 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="EDharaCenter" class="form-label">@Model.Resource["e-Dhara Center"]</label>
-                                        <input type="text" class="form-control" id="EDharaCenter" name="EDharaCenter" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.EDharaCenter : "")">
+                                        <input type="text" class="form-control smallsize" id="EDharaCenter" name="EDharaCenter" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.EDharaCenter : "")">
                                     </div>
 
                                     <div class="col-md-3 ">
                                         <label for="DharaCenterNo" class="form-label">@Model.Resource["Note Number"]</label>
-                                        <input type="text" class="form-control" id="DharaCenterNo" name="DharaCenterNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.DharaCenterNo : "")">
+                                        <input type="text" class="form-control smallsize" id="DharaCenterNo" name="DharaCenterNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.DharaCenterNo : "")">
                                     </div>
 
                                     <div class="col m-3">
@@ -197,7 +197,7 @@
 
                                     <div class="col-md-3">
                                         <label for="CitySurveyNo" class="form-label">@Model.Resource["Note Number"]</label>
-                                        <input type="text" class="form-control" id="CitySurveyNo" name="CitySurveyNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.CitySurveyNo : "")">
+                                        <input type="text" class="form-control smallsize" id="CitySurveyNo" name="CitySurveyNo" value="@(Model.Document != null && Model.Document.Id != 0 ? Model.Document.CitySurveyNo : "")">
                                     </div>
 
                                     <div class="col">
@@ -293,13 +293,14 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <label for="file" class="form-label">@Model.Resource["Payment Receipt"]</label>
+                                <label class="form-label">@Model.Resource["Payment Receipt"]</label>
                             </div>
                             <div class="col-md-6" style="display:flex;margin-left:-40px">
-                                <input class="form-control form-control-sm" id="file" name="file" type="file">
-                                <input type="hidden" name="foreignKeyId" value="" /> 
-                                <input type="hidden" name="sourceType" value="Follow" />  
-                                <button asp-action="UploadFile" asp-controller="home" type="submit" class="btn btn-light upload" style="width:100px;">Upload</button>
+                                <input class="form-control form-control-sm" id="Document"  type="file">
+                                @* <input type="hidden" name="id" value="" /> 
+                                <input type="hidden" name="sourceType" value="Follow" />   *@
+                               @*  <button asp-action="UploadFile" asp-controller="home" type="submit" class="btn btn-light upload" style="width:100px;">Upload</button> *@
+                                <button  type="submit" class="btn btn-light upload" style="width:100px;" name="Document">Upload</button>
                             </div>
                         </div>
                         <div class="row">
@@ -310,7 +311,7 @@
                                 }
                                 else
                                 {
-                                    <button asp-action="AddDocument" asp-controller="Home" type="submit" class="btn btn-primary mt-4" style="width:100px;">Submit</button>
+                                    <button asp-action="AddFollow" asp-controller="Home" type="submit" class="btn btn-primary mt-4" style="width:100px;">Submit</button>
                                 }
                                 <a asp-action="GetDocumentDtl" asp-controller="home" class="btn btn-primary mt-4 mx-3" style="width:100px;">Back</a>
                             </div>
