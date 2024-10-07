@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MultiLang;
 
@@ -11,9 +12,11 @@ using MultiLang;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241004052920_Add_Column_Quo")]
+    partial class Add_Column_Quo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("QuotationId");
 
-                    b.ToTable("Attachment", (string)null);
+                    b.ToTable("Attachment");
                 });
 
             modelBuilder.Entity("Domain.Model.AttachmentsViewMovel", b =>
@@ -74,7 +77,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("AttchmentId");
 
-                    b.ToTable("Attachments", (string)null);
+                    b.ToTable("Attachments");
                 });
 
             modelBuilder.Entity("Domain.Model.DocumentViewModel", b =>
@@ -136,7 +139,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Follow", (string)null);
+                    b.ToTable("Follow");
                 });
 
             modelBuilder.Entity("Domain.Model.EmployeeViewModel", b =>
@@ -161,7 +164,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("employees", (string)null);
+                    b.ToTable("employees");
                 });
 
             modelBuilder.Entity("Domain.Model.QuotationViewModel", b =>
@@ -296,7 +299,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Quotation", (string)null);
+                    b.ToTable("Quotation");
                 });
 
             modelBuilder.Entity("Domain.Model.UserViewModel", b =>
@@ -320,7 +323,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Domain.Model.AttachmentViewModel", b =>

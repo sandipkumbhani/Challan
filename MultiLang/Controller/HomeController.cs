@@ -33,10 +33,12 @@ public class HomeController : Controller
         _loginService = loginService;
         _attachmentServices = attachmentServices;
     }
+
     public IActionResult AddUser()
     {
         return View(_resourceServices.GetAllResources());
     }
+
     [HttpPost]
     public IActionResult AddUser(UserViewModel model)
     {
@@ -107,7 +109,12 @@ public class HomeController : Controller
         return View("Employee");
     }
 
-
+    public PartialViewResult search(string searchtext)
+    {
+        var detail = _documentServices.GetAllDocuments();
+        var result = detail.Where(x => x.DocumentNo.ToString().Contains(searchtext)).ToList();
+        return PartialView("GetDocumentDtl",result);
+    }
     public IActionResult Follow(int id)
     {
         var resources = _resourceServices.GetAllResources();
@@ -157,7 +164,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddDocument(DocumentViewModel model)
+    public IActionResult AddFollow(DocumentViewModel model)
     {
         if (ModelState.IsValid)
         {
@@ -197,7 +204,12 @@ public class HomeController : Controller
     }
     public IActionResult DelFollow(int id)
     {
-        
+        if(ModelState.IsValid)
+        {
+            _documentServices.Delete(id);
+            return RedirectToAction("GetDocumentDtl", "Home");
+        }
+       
         return View();
     }
     [HttpGet]
@@ -242,7 +254,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddDocument2(QuotationViewModel model)
+    public IActionResult AddQuotation(QuotationViewModel model)
     {
         if(model != null)
         {
@@ -260,6 +272,16 @@ public class HomeController : Controller
             return RedirectToAction("GetQuotationlDtl","home");
         }
         return View(model);
+    }
+
+    public IActionResult DeleteQuotation(int id)
+    {
+        if (ModelState.IsValid)
+        {
+            _quotationServices.Delete(id);
+            return RedirectToAction("GetQuotationlDtl", "home");
+        }
+        return View();
     }
     [HttpGet]
     public IActionResult GetQuotationlDtl()

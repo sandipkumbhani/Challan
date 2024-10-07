@@ -66,5 +66,6 @@ namespace Domain.Model
         public string ConversionTax {  get; set; }
 
         public string lay_out { get; set; }
+        public int StatusId { get; set; } = 1;
     }
 }

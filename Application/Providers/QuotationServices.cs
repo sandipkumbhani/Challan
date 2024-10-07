@@ -21,6 +21,19 @@ namespace Application.Providers
             return _quotaionRepo.AddDocument(model);
         }
 
+        public int Delete(int id)
+        {
+            var res = _quotaionRepo.GetQutation(id);
+            if(res != null)
+            {
+                res.StatusId = 0;
+                _quotaionRepo.DeleteQuotation(res);
+                return 1;
+
+            }
+            return 0;
+        }
+
         public QuotationViewModel Edit(QuotationViewModel model)
         {
             return _quotaionRepo.EditQuotation(model);

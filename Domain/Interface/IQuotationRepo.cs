@@ -15,5 +15,6 @@ namespace Domain.Interface
 
         public QuotationViewModel GetQutation(int id);
         public QuotationViewModel EditQuotation(QuotationViewModel Document);
+        public QuotationViewModel DeleteQuotation(QuotationViewModel Document);
     }
 }

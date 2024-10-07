@@ -14,6 +14,6 @@ namespace Domain.Interface
 
         public DocumentViewModel GetDocument(int id);
         public DocumentViewModel EditFollow(DocumentViewModel document);
-        public DocumentViewModel DeleteFollow(int id);
+        public DocumentViewModel DeleteFollow(DocumentViewModel DocumentViewModel);
     }
 }

@@ -68,8 +68,8 @@
         </div>
     </div>
     <div class="rightSide">
-        <div class="container">
-            <header class="headings">
+        <div>
+            <header>
                 <h4 style="padding: 5px;">
                    Quotation
                 </h4>
@@ -81,123 +81,123 @@
                     <div class="card-body">
                         <div class="">
                             <label for="Name" class="form-label">@Model.Resource["Name"]</label>
-                            <input type="text" class="form-control" id="Name" name="Name" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Name : "")">
+                            <input type="text" class="form-control smallsize" id="Name" name="Name" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Name : "")">
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="Village" class="form-label">@Model.Resource["Village"]</label>
-                                <input type="text" class="form-control" id="Village" name="Village" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Village : "")">
+                                <input type="text" class="form-control smallsize" id="Village" name="Village" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Village : "")">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="Taluka" class="form-label">@Model.Resource["Taluka"]</label>
-                                <input type="text" class="form-control" id="Taluka" name="Taluka" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Taluka : "")">
+                                <input type="text" class="form-control smallsize" id="Taluka" name="Taluka" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Taluka : "")">
                             </div>
                             <div class="col-md-4">
                                 <label for="District" class="form-label">@Model.Resource["District"]</label>
-                                <input type="text" class="form-control" id="District" name="District" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.District : "")">
+                                <input type="text" class="form-control smallsize" id="District" name="District" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.District : "")">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="SurveyNo" class="form-label">@Model.Resource["Survey Number"]</label>
-                                <input type="text" class="form-control" id="SurveyNo" name="SurveyNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.SurveyNo : "")">
+                                <input type="text" class="form-control smallsize" id="SurveyNo" name="SurveyNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.SurveyNo : "")">
                             </div>
                         </div>
 
                         <div class="">
                             <label for="LandArea" class="form-label">@Model.Resource["Area of Uncultivated Land"]</label>
-                            <input type="text" class="form-control" id="LandArea" name="LandArea" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.LandArea : "")">
+                            <input type="text" class="form-control smallsize" id="LandArea" name="LandArea" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.LandArea : "")">
                         </div>
 
                         <div class="">
                             <label for="MobileNo" class="form-label">@Model.Resource["Mobile Number"]</label>
-                            <input type="text" class="form-control" id="MobileNo" name="MobileNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.MobileNo : "")">
+                            <input type="text" class="form-control smallsize" id="MobileNo" name="MobileNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.MobileNo : "")">
                         </div>
 
                         <div class="row">
                             <div class="col-md-5">
                                 <label for="ApplicationNo" class="form-label">@Model.Resource["Application No"]</label>
-                                <input type="text" class="form-control" id="ApplicationNo" name="ApplicationNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.ApplicationNo : "")">
+                                <input type="text" class="form-control smallsize" id="ApplicationNo" name="ApplicationNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.ApplicationNo : "")">
                             </div>
                             <div class="col-md-4">
                                 <label for="App_Date" class="form-label">@Model.Resource["Date"]</label>
-                                <input type="text" class="form-control" id="App_Date" name="App_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.App_Date : "")">
+                                <input type="text" class="form-control smallsize" id="App_Date" name="App_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.App_Date : "")">
                             </div>
                         </div>
                         <div class="">
                             <label for="Email" class="form-label">@Model.Resource["Mail Instred into the Application"]</label>
-                            <input type="text" class="form-control" id="Email" name="Email" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Email : "")">
+                            <input type="text" class="form-control smallsize" id="Email" name="Email" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Email : "")">
                         </div>
                         <div class="">
                             <label for="App_mobileNo" class="form-label">@Model.Resource["Mobile Number Instred into the Application"]</label>
-                            <input type="text" class="form-control" id="App_mobileNo" name="App_mobileNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.App_mobileNo : "")">
+                            <input type="text" class="form-control smallsize" id="App_mobileNo" name="App_mobileNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.App_mobileNo : "")">
                         </div>
 
                         <div class="row">
                             <div class="col-md-5">
                                 <label for="ProcessFees" class="form-label">@Model.Resource["Amount of Proccessing fees"]</label>
-                                <input type="text" class="form-control" id="ProcessFees" name="ProcessFees" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.ProcessFees : "")">
+                                <input type="text" class="form-control smallsize" id="ProcessFees" name="ProcessFees" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.ProcessFees : "")">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-8">
                                 <label for="Pro_Refe_no" class="form-label">@Model.Resource["Reference Number for payment of Proccessing Fees"]</label>
-                                <input type="text" class="form-control" id="Pro_Refe_no" name="Pro_Refe_no" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Pro_Refe_no : "")">
+                                <input type="text" class="form-control smallsize" id="Pro_Refe_no" name="Pro_Refe_no" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Pro_Refe_no : "")">
                             </div>
                             <div class="col-md-4">
                                 <label for="Pro_Date" class="form-label">@Model.Resource["Date"]</label>
-                                <input type="text" class="form-control" id="Pro_Date" name="Pro_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Pro_Date : "")">
+                                <input type="text" class="form-control smallsize" id="Pro_Date" name="Pro_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Pro_Date : "")">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-5">
                                 <label for="MeasurementNo" class="form-label">@Model.Resource["Measurement Application Number"]</label>
-                                <input type="text" class="form-control" id="MeasurementNo" name="MeasurementNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.MeasurementNo : "")">
+                                <input type="text" class="form-control smallsize" id="MeasurementNo" name="MeasurementNo" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.MeasurementNo : "")">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-8">
                                 <label for="Measur_Refe_No" class="form-label">@Model.Resource["Reference Number for payment of Measurement Fees"]</label>
-                                <input type="text" class="form-control" id="Measur_Refe_No" name="Measur_Refe_No" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Measur_Refe_No : "")">
+                                <input type="text" class="form-control smallsize" id="Measur_Refe_No" name="Measur_Refe_No" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Measur_Refe_No : "")">
                             </div>
                             <div class="col-md-4">
                                 <label for="Measur_Date" class="form-label">@Model.Resource["Date"]</label>
-                                <input type="text" class="form-control" id="Measur_Date" name="Measur_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Measur_Date : "")">
+                                <input type="text" class="form-control smallsize" id="Measur_Date" name="Measur_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Measur_Date : "")">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-5">
                                 <label for="MeasurOrNot" class="form-label">@Model.Resource["Measured or not"]</label>
-                                <input type="text" class="form-control" id="MeasurOrNot" name="MeasurOrNot" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.MeasurOrNot : "")">
+                                <input type="text" class="form-control smallsize" id="MeasurOrNot" name="MeasurOrNot" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.MeasurOrNot : "")">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="Opinion" class="form-label">@Model.Resource["Opinion"]</label>
-                                <input type="text" class="form-control" id="Opinion" name="Opinion" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Opinion : "")">
+                                <input type="text" class="form-control smallsize" id="Opinion" name="Opinion" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Opinion : "")">
                             </div>
                             <div class="col-md-4">
                                 <label for="CircleOfficer" class="form-label">@Model.Resource["Circle Officer"]</label>
-                                <input type="text" class="form-control" id="CircleOfficer" name="CircleOfficer" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.CircleOfficer : "")">
+                                <input type="text" class="form-control smallsize" id="CircleOfficer" name="CircleOfficer" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.CircleOfficer : "")">
                             </div>
                         </div>
-                        <div style="margin-left:240px;">
+                        <div style="margin-left:208px;">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="Mamlatdar" class="form-label">@Model.Resource["Mamlatdar"]</label>
-                                    <input type="text" class="form-control" id="Mamlatdar" name="Mamlatdar" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Mamlatdar : "")">
+                                    <input type="text" class="form-control smallsize" id="Mamlatdar" name="Mamlatdar" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Mamlatdar : "")">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="Other" class="form-label">@Model.Resource["Other(if any)"]</label>
-                                    <input type="text" class="form-control" id="Other" name="Other" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Other : "")">
+                                    <input type="text" class="form-control smallsize" id="Other" name="Other" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Other : "")">
                                 </div>
                             </div>
                         </div>
@@ -205,25 +205,25 @@
                         <div class="row g-3">
                             <div class="col-md-5">
                                 <label for="Con_letter_Date" class="form-label">@Model.Resource["Date of letter for payment of Conversion Tax"]</label>
-                                <input type="text" class="form-control" id="Con_letter_Date" name="Con_letter_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Con_letter_Date : "")">
+                                <input type="text" class="form-control smallsize" id="Con_letter_Date" name="Con_letter_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Con_letter_Date : "")">
                             </div>
                         </div>
 
                         <div class="row g-3">
                             <div class="col-md-5">
                                 <label for="Con_Amount" class="form-label">@Model.Resource["Amount of Conversion Tax"]</label>
-                                <input type="text" class="form-control" id="Con_Amount" name="Con_Amount" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Con_Amount : "")">
+                                <input type="text" class="form-control smallsize" id="Con_Amount" name="Con_Amount" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Con_Amount : "")">
                             </div>
                         </div>
 
                         <div class="row g-3">
                             <div class="col-md-8">
                                 <label for="Con_Refe_No" class="form-label">@Model.Resource["Reference Number for payment of Conversion Tax"]</label>
-                                <input type="text" class="form-control" id="Con_Refe_No" name="Con_Refe_No" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Con_Refe_No : "")">
+                                <input type="text" class="form-control smallsize" id="Con_Refe_No" name="Con_Refe_No" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Con_Refe_No : "")">
                             </div>
                             <div class="col-md-4">
                                 <label for="Con_Date" class="form-label">@Model.Resource["Date"]</label>
-                                <input type="text" class="form-control" id="Con_Date" name="Con_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Con_Date : "")">
+                                <input type="text" class="form-control smallsize" id="Con_Date" name="Con_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Con_Date : "")">
                             </div>
                         </div>
 
@@ -250,7 +250,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="Amount_Dtl_Date" class="form-label">@Model.Resource["Date"]</label>
-                                <input type="text" class="form-control" id="Amount_Dtl_Date" name="Amount_Dtl_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Amount_Dtl_Date : "")">
+                                <input type="text" class="form-control smallsize" id="Amount_Dtl_Date" name="Amount_Dtl_Date" value="@(Model.Quotaion != null && Model.Quotaion.Id != 0 ? Model.Quotaion.Amount_Dtl_Date : "")">
                             </div>
                         </div>
                
@@ -282,7 +282,7 @@
                                     <label class="form-label">@Model.Resource["Uncultivated Application"]</label>
                                 </div>
                                 <div class="col">
-                                    <div class="rado" style="display:flex; margin-left:-60px;">
+                                    <div class="rado" style="display:flex; margin-left:-40px;">
                                         <div class="form-check ">
                                             <input class="form-check-input" type="radio" name="uncultivat_appli" value="@Model.Resource["Remaining"]" id="uncultivat_appli1">
                                             <label class="form-check-label" for="uncultivat_appli1">
@@ -304,7 +304,7 @@
                                     <label class="form-label">@Model.Resource["Measurement Application"]</label>
                                 </div>
                                 <div class="col">
-                                    <div class="rado" style="display:flex; margin-left:-60px;">
+                                    <div class="rado" style="display:flex; margin-left:-40px;">
                                         <div class="form-check ">
                                             <input class="form-check-input" type="radio" name="Measurment_appli" value="@Model.Resource["Remaining"]" id="Measurment_appli1">
                                             <label class="form-check-label" for="Measurment_appli1">
@@ -326,7 +326,7 @@
                                     <label class="form-label">@Model.Resource["Conversion Tax"]</label>
                                 </div>
                                 <div class="col">
-                                    <div class="rado" style="display:flex; margin-left:-60px;">
+                                    <div class="rado" style="display:flex; margin-left:-40px;">
                                         <div class="form-check ">
                                             <input class="form-check-input" type="radio" name="ConversionTax" value="@Model.Resource["Remaining"]" id="ConversionTax1">
                                             <label class="form-check-label" for="ConversionTax1">
@@ -348,7 +348,7 @@
                                     <label class="form-label">@Model.Resource["Layout"]</label>
                                 </div>
                                 <div class="col">
-                                    <div class="rado" style="display:flex; margin-left:-60px;">
+                                    <div class="rado" style="display:flex; margin-left:-40px;">
                                         <div class="form-check ">
                                             <input class="form-check-input" type="radio" name="lay_out" value="@Model.Resource["Remaining"]" id="lay_out1">
                                             <label class="form-check-label" for="lay_out1">
@@ -372,7 +372,7 @@
                         }
                         else
                         {
-                            <button asp-action="AddDocument2" asp-controller="Home" type="submit" class="btn btn-primary mt-4" style="width:100px;">Submit</button>
+                            <button asp-action="AddQuotation" asp-controller="Home" type="submit" class="btn btn-primary mt-4" style="width:100px;">Submit</button>
                         }
                         <a asp-action="GetQuotationlDtl" asp-controller="home" class="btn btn-primary mt-4 mx-3" style="width:100px;">Back</a>
                     </div>

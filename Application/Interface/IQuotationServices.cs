@@ -14,5 +14,6 @@ namespace Application.Interface
 
         public QuotationViewModel Get(int id);
         public QuotationViewModel Edit(QuotationViewModel model);
+        public int Delete(int id);
     }
 }

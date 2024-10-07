@@ -24,9 +24,11 @@ namespace Infrastructure.Provider
             return document;
         }
 
-        public DocumentViewModel DeleteFollow(int id)
+        public DocumentViewModel DeleteFollow(DocumentViewModel document)
         {
-            return null;
+            _context.Update(document);
+            _context.SaveChanges();
+            return document;
         }
 
         public DocumentViewModel EditFollow(DocumentViewModel document)
@@ -42,7 +44,7 @@ namespace Infrastructure.Provider
         }
         public IEnumerable<DocumentViewModel> GetDocuments()
         {
-            return _context.Follow;
-        }
+            return _context.Follow.Where(x => x.StatusId == 1);
+            }
     }
 }

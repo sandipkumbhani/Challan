@@ -16,7 +16,7 @@ namespace Application.Interface
 
         public DocumentViewModel Get(int id);
         public DocumentViewModel Edit(DocumentViewModel model);
-        public DocumentViewModel Delete(int id);
+        public int Delete(int id);
     }
 }
  

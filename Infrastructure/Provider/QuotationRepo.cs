@@ -23,6 +23,13 @@ namespace Infrastructure.Provider
             return Document;
         }
 
+        public QuotationViewModel DeleteQuotation(QuotationViewModel Document)
+        {
+           _Context.Update(Document);
+            _Context.SaveChanges();
+            return Document;
+        }
+
         public QuotationViewModel EditQuotation(QuotationViewModel Document)
         {
            _Context.Update(Document);
@@ -32,7 +39,7 @@ namespace Infrastructure.Provider
 
         public IEnumerable<QuotationViewModel> GetQuotaion()
         {
-            return _Context.Quotation;
+            return _Context.Quotation.Where(x => x.StatusId ==1 );
         }
 
         public QuotationViewModel GetQutation(int id)
