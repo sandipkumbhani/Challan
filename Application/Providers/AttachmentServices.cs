@@ -16,9 +16,19 @@ namespace Application.Providers
         {
             _attachment = attachment;
         }
-        public AttachmentViewModel Add(AttachmentViewModel model)
+        public AttachmentsViewMovel Add(AttachmentsViewMovel model)
         {
             return  _attachment.AddAttachment(model);
+        }
+
+        public AttachmentsViewMovel Edit(AttachmentsViewMovel model)
+        {
+            return _attachment.EditAttachment(model);
+        }
+
+        public AttachmentsViewMovel Get(int id)
+        {
+            return _attachment.GetAttachment(id);
         }
     }
 }

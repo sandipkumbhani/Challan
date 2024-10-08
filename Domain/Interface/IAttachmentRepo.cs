@@ -9,6 +9,8 @@ namespace Domain.Interface
 {
     public  interface IAttachmentRepo
     {
-        public AttachmentViewModel AddAttachment(AttachmentViewModel model);
+        public AttachmentsViewMovel AddAttachment(AttachmentsViewMovel model);
+        public AttachmentsViewMovel EditAttachment(AttachmentsViewMovel model);
+        public AttachmentsViewMovel GetAttachment(int id);
     }
 }

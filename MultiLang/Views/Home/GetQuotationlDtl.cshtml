@@ -93,7 +93,7 @@
                     <tr>
                         <td>@dtl.SurveyNo</td>
                         <td>@dtl.Name</td>
-                        <td>@dtl.App_Date</td>
+                        <td>@(dtl.App_Date.HasValue? dtl.App_Date.Value.ToString("dd MMM yyyy") : "")</td>
                         <td><a asp-action="QuotationPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">Download  <i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="Quotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="DeleteQuotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-danger" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></a></td>

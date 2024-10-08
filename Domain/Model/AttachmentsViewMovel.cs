@@ -13,9 +13,9 @@ namespace Domain.Model
         public int AttchmentId { get; set; }
         public string? Document {  get; set; }
         public int? FollowId { get; set; } = null;
-        public DocumentViewModel Documents { get; set; }
+        public virtual DocumentViewModel Follow { get; set; }
         public int? QuotationId { get; set; } = null;
-        public QuotationViewModel Quotation { get; set; }
+        public virtual QuotationViewModel Quotation { get; set; }
 
     }
 }

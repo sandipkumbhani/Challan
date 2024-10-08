@@ -1,5 +1,6 @@
 ﻿using Domain.Interface;
 using Domain.Model;
+using Microsoft.EntityFrameworkCore;
 using MultiLang;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,23 @@ namespace Infrastructure.Provider
         {
             _context = context;
         }
-        public AttachmentViewModel AddAttachment(AttachmentViewModel model)
+        public AttachmentsViewMovel AddAttachment(AttachmentsViewMovel model)
         {
-            _context.Attachment.Add(model);
+            _context.Attachments.Add(model);
             _context.SaveChanges();
             return model;
+        }
+
+        public AttachmentsViewMovel EditAttachment(AttachmentsViewMovel model)
+        {
+            _context.Update(model);
+            _context.SaveChanges();
+            return model;
+        }
+
+        public AttachmentsViewMovel GetAttachment(int id)
+        {
+           return _context.Attachments.Find(id);
         }
     }
 }

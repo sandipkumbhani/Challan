@@ -207,6 +207,9 @@
   <data name="Gram Panchayat" xml:space="preserve">
     <value>Gram Panchayat</value>
   </data>
+  <data name="Invoice" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
   <data name="Layout" xml:space="preserve">
     <value>Layout</value>
   </data>

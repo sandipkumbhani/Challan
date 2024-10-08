@@ -207,6 +207,9 @@
   <data name="Gram Panchayat" xml:space="preserve">
     <value>ગ્રામ પંચાયત</value>
   </data>
+  <data name="Invoice" xml:space="preserve">
+    <value>ઈન્વોઈસ</value>
+  </data>
   <data name="Layout" xml:space="preserve">
     <value>લે આઉટ</value>
   </data>

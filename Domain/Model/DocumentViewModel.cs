@@ -39,7 +39,7 @@ namespace Domain.Model
 
         public string? GramPanchayat {  get; set; }   
         public string? DocumentPayment {  get; set; }
-
+        public string? Document {  get; set; }
         public int StatusId { get; set; } = 1;
 
     }
