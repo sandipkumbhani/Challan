@@ -129,7 +129,27 @@ public class HomeController : Controller
 
         return View(model);
     }
-    
+    [HttpGet]
+    public IActionResult Invoice(int id)
+    {
+        var document = _documentServices.Get(id);
+        var result = _attachmentServices.GetAttachments().Where(x=>x.FollowId == document.Id).ToList();
+        //return PartialView("_Invoice",result);
+        return Json(result);
+    }
+    [HttpGet]
+    public IActionResult DownloadInvoice(int id)
+    {
+        
+        return new ViewAsPdf();
+    }
+    [HttpGet]
+    public IActionResult ViewInvoice(int id)
+    {
+
+        return new ViewAsPdf();
+    }
+
     public string UploadFile(IFormFile file)
     {
         string fileName = null;

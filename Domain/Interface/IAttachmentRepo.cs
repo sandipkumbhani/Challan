@@ -12,5 +12,6 @@ namespace Domain.Interface
         public AttachmentsViewMovel AddAttachment(AttachmentsViewMovel model);
         public AttachmentsViewMovel EditAttachment(AttachmentsViewMovel model);
         public AttachmentsViewMovel GetAttachment(int id);
+        public IEnumerable<AttachmentsViewMovel> GetAttachments();
     }
 }
