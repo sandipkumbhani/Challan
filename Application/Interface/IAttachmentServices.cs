@@ -9,6 +9,9 @@ namespace Application.Interface
 {
     public interface IAttachmentServices
     {
-        public AttachmentViewModel Add(AttachmentViewModel model);
+        public AttachmentsViewMovel Add(AttachmentsViewMovel model);
+        public AttachmentsViewMovel Edit(AttachmentsViewMovel model);
+        public AttachmentsViewMovel Get(int id);
+
     }
 }

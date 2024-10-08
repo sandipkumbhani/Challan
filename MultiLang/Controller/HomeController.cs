@@ -11,6 +11,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Reflection.Metadata;
+using Microsoft.AspNetCore.Routing.Constraints;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace MultiLang.Controllers;
 
@@ -108,8 +110,8 @@ public class HomeController : Controller
         }
         return View("Employee");
     }
-
-    public PartialViewResult search(string searchtext)
+    [HttpPost]
+    public IActionResult search(string searchtext)
     {
         var detail = _documentServices.GetAllDocuments();
         var result = detail.Where(x => x.DocumentNo.ToString().Contains(searchtext)).ToList();
@@ -127,48 +129,30 @@ public class HomeController : Controller
 
         return View(model);
     }
-
-    [HttpPost]
-    public IActionResult UploadFile(IFormFile file,int id,string sourceType)
+    
+    public string UploadFile(IFormFile file)
     {
+        string fileName = null;
         if (file != null)
         {
             if(file.Length > 0)
             {
-                var fileName = Path.GetFileName(file.FileName);
+                fileName = Path.GetFileName(file.FileName);
                 var fileExtention = Path.GetExtension(fileName);
                 var FileName = string.Concat(Convert.ToString(Guid.NewGuid()),fileExtention);
-                
-                var details = new AttachmentViewModel
-                {
-                    Document= fileName,
-                };
-                if(sourceType == "Follow")
-                {
-                    details.FollowId = id;
-                }
-                if (sourceType == "Quotation")
-                {
-                    details.QuotationId = id;
 
-                }
-                using (var target = new MemoryStream())
-                {
-                    file.CopyTo(target);
-                }
-                _attachmentServices.Add(details);
-                return RedirectToAction("Follow");
+                return fileName;
             }
         }
-        return View("Follow");
+        return fileName;
     }
 
     [HttpPost]
-    public IActionResult AddFollow(DocumentViewModel model)
+    public IActionResult AddFollow(DocumentViewModel model,IFormFile Document)
     {
         if (ModelState.IsValid)
         {
-            
+            string file = UploadFile(Document);
             var details = new DocumentViewModel
              {
                 DocumentNo = model.DocumentNo,
@@ -185,18 +169,29 @@ public class HomeController : Controller
                 CityTalati = model.CityTalati,
                 GramPanchayat = model.GramPanchayat,
                 DocumentPayment = model.DocumentPayment,
-               
+                Document= file,
+
             };
             _documentServices.Add(details);
+            var followid = details.Id;
+            var detail = new AttachmentsViewMovel
+            {
+                Document = file,
+                FollowId= followid,
+            };
+            _attachmentServices.Add(detail);
             return RedirectToAction("Follow", "Home");
         }
         return View("Follow");
     }
+
     [HttpPost]
-    public IActionResult EditFollow(DocumentViewModel model)
+    public IActionResult EditFollow(DocumentViewModel model,int id, IFormFile Document)
     {
         if (ModelState.IsValid)
         {
+            string file = UploadFile(Document);
+            model.Document = file;
             _documentServices.Edit(model);
             return RedirectToAction("GetDocumentDtl", "Home");
         }
@@ -207,6 +202,7 @@ public class HomeController : Controller
         if(ModelState.IsValid)
         {
             _documentServices.Delete(id);
+            
             return RedirectToAction("GetDocumentDtl", "Home");
         }
        
@@ -254,20 +250,33 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddQuotation(QuotationViewModel model)
+    public IActionResult AddQuotation(QuotationViewModel model,IFormFile Document)
     {
-        if(model != null)
+        if(ModelState.IsValid)
         {
+            string file = UploadFile(Document);
+            model.Document = file;
+            
             _quotationServices.Add(model);
+
+            var quotationid = model.Id;
+            var detail = new AttachmentsViewMovel
+            {
+                Document=file,
+                QuotationId=quotationid,
+            };
+            _attachmentServices.Add(detail);
             return RedirectToAction("Quotation", "Home");
         }
         return View("Quotation");
     }
     [HttpPost]
-    public IActionResult EditQuotation(QuotationViewModel model,int id)
+    public IActionResult EditQuotation(QuotationViewModel model,int id, IFormFile Document)
     {
         if(ModelState.IsValid)
         {
+            string file = UploadFile(Document);
+            model.Document= file;
             _quotationServices.Edit(model);
             return RedirectToAction("GetQuotationlDtl","home");
         }

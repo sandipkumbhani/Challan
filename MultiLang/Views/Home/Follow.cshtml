@@ -116,7 +116,7 @@
                                 <div class="input-group-sm">
                                     <label for="DocumentType"></label>
                                     <select class="form-select smallsize" style="height: 39px;margin-top: -18px;font-size:small;" id="DocumentType" name="DocumentType">
-                                        @if(Model.Document != null && Model.Document.Id != 0)
+                                        @if (Model.Document != null && Model.Document.Id != 0)
                                         {
                                             <option value="@Model.Document.DocumentType" selected>@Model.Document.DocumentType </option>
                                             <option value="@Model.Resource["Sales document"]">@Model.Resource["Sales document"]</option>
@@ -293,21 +293,21 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <label class="form-label">@Model.Resource["Payment Receipt"]</label>
+                                <label for="Document" class="form-label">@Model.Resource["Invoice"]</label>
                             </div>
                             <div class="col-md-6" style="display:flex;margin-left:-40px">
-                                <input class="form-control form-control-sm" id="Document"  type="file">
+                                <input class="form-control form-control-sm" id="Document"   name="Document"  type="file">
                                 @* <input type="hidden" name="id" value="" /> 
                                 <input type="hidden" name="sourceType" value="Follow" />   *@
-                               @*  <button asp-action="UploadFile" asp-controller="home" type="submit" class="btn btn-light upload" style="width:100px;">Upload</button> *@
-                                <button  type="submit" class="btn btn-light upload" style="width:100px;" name="Document">Upload</button>
+                               @*<button asp-action="UploadFile" asp-controller="home" type="submit" class="btn btn-light upload" style="width:100px;">Upload</button> *@
+                                <label class="btn btn-light upload" style="width:100px;" id="Document" name="Document">Upload</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 @if(Model.Document !=null && Model.Document.Id != 0)
                                 {
-                                    <button asp-action="EditFollow"  asp-controller="Home" type="submit" class="btn btn-primary mt-4" style="width:100px;">Update</button>
+                                    <button asp-action="EditFollow"  asp-controller="Home" asp-route-id="@Model.Document.Id" type="submit" class="btn btn-primary mt-4" style="width:100px;">Update</button>
                                 }
                                 else
                                 {

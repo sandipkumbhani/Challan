@@ -76,7 +76,7 @@
             </header>
         </div>
         <div class="page">
-            <form method="post" > 
+            <form method="post" enctype="multipart/form-data">
                 <div class="card" style="margin-right:120px;margin-left:-305px;margin-top:-20px;">
                     <div class="card-body">
                         <div class="">
@@ -364,9 +364,22 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="Document" class="form-label">@Model.Resource["Invoice"]</label>
+                                </div>
+                                <div class="col-md-6" style="display:flex;margin-left:-40px">
+                                    <input class="form-control form-control-sm" id="Document" name="Document" type="file">
+                                    @* <input type="hidden" name="id" value="" />
+                                    <input type="hidden" name="sourceType" value="Follow" />   *@
+                                    @*<button asp-action="UploadFile" asp-controller="home" type="submit" class="btn btn-light upload" style="width:100px;">Upload</button> *@
+                                    <label class="btn btn-light upload" style="width:100px;" id="Document" name="Document">Upload</label>
+                                </div>
+                            </div>
                         </div>
-                        @if (Model.Quotaion != null && Model.Quotaion.Id != 0)
+                <div class="row">
+                    <div class="col-md-12">
+                        @if(Model.Quotaion != null && Model.Quotaion.Id != 0)
                         {
                             <button asp-action="EditQuotation" asp-route-id="@Model.Quotaion.Id" asp-controller="Home" type="submit" class="btn btn-primary mt-4" style="width:100px;">Update</button>
                         }

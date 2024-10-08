@@ -33,7 +33,7 @@ namespace Infrastructure.Provider
 
         public DocumentViewModel EditFollow(DocumentViewModel document)
         {
-            _context.Follow.Update(document);
+            _context.Update(document);
             _context.SaveChanges();
             return document;
         }

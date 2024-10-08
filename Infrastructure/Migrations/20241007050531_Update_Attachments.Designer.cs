@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MultiLang;
 
@@ -11,9 +12,11 @@ using MultiLang;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241007050531_Update_Attachments")]
+    partial class Update_Attachments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,6 +66,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Document")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("DocumentsId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("FollowId")
                         .HasColumnType("int");
 
@@ -71,7 +77,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("AttchmentId");
 
-                    b.HasIndex("FollowId");
+                    b.HasIndex("DocumentsId");
 
                     b.HasIndex("QuotationId");
 
@@ -108,9 +114,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DharaCenterNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Document")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DocumentNo")
@@ -217,9 +220,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("District")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Document")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -347,15 +347,17 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Model.AttachmentsViewMovel", b =>
                 {
-                    b.HasOne("Domain.Model.DocumentViewModel", "Follow")
+                    b.HasOne("Domain.Model.DocumentViewModel", "Documents")
                         .WithMany()
-                        .HasForeignKey("FollowId");
+                        .HasForeignKey("DocumentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Model.QuotationViewModel", "Quotation")
                         .WithMany()
                         .HasForeignKey("QuotationId");
 
-                    b.Navigation("Follow");
+                    b.Navigation("Documents");
 
                     b.Navigation("Quotation");
                 });

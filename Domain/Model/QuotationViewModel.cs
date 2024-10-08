@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Domain.Model
         public string MobileNo {  get; set; }
 
         public string ApplicationNo {  get; set; }
-
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd MMM yyyy}")]
         public DateOnly? App_Date {  get; set; }
 
         public string Email { get; set; }
@@ -66,6 +67,7 @@ namespace Domain.Model
         public string ConversionTax {  get; set; }
 
         public string lay_out { get; set; }
+        public string? Document { get; set; }
         public int StatusId { get; set; } = 1;
     }
 }
