@@ -35,5 +35,11 @@ namespace Infrastructure.Provider
         {
            return _context.Attachments.Find(id);
         }
+        public IEnumerable<AttachmentsViewMovel> GetAttachments()
+        {
+            var result = _context.Attachments.ToList();
+            return result;
+        }
+      
     }
 }

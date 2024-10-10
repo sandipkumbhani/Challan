@@ -18,6 +18,11 @@
         <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
         <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
         <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="StyleSheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <title>@ViewBag.Title</title>
     </head>
@@ -99,6 +104,7 @@
                     <th class="">Document No.</th>
                     <th class="">Document Type</th>
                     <th class="">Date</th>
+                    <th class="">Invoice</th>
                     <th class="">Download PDF</th>
                     <th class="">Edit</th>
                     <th class="">Delete</th>
@@ -112,14 +118,45 @@
                         <td>@dtl.DocumentNo</td>
                         <td>@dtl.DocumentType</td>
                         <td>@(dtl.Date.HasValue?dtl.Date.Value.ToString("dd MMM yyyy") : "")</td>
-                        <td><a asp-action="FollowPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">Download  <i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
+                        <td><button asp-route-id="@dtl.Id" id="view" onclick="GetInvoice(@dtl.Id)" type="button" style="width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-content="New content loaded!"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>
+                        @*<td><a asp-action="Invoice" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">  <i class="fa-solid fa-file-invoice" style="color: #ffffff;" data-toggle="modal" data-target="#myModal" data-content="New content loaded!"></i></button></a></td>*@
+                        <td><a asp-action="FollowPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="Follow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="DelFollow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-danger" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></a></td>
                         </tr>
                     }
                 </tbody>
-            </table>
-      
+            </table>      
+    </div>
+    <div class="container mt-5">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Invoice Details!</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                         <table class="table table table-striped table-bordered">
+                            <thead id="thead">
+                                 <tr>
+                                    <th>Documnet Name</th>
+                                    <th>View</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table">
+                                                                                                                                       
+                            </tbody>
+                        </table> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         function Search()
@@ -128,6 +165,56 @@
            var searchtext = $('#searchtext').val();
             console.log(searchtext);
             $('#tabledata').hide();
+        }      
+
+        function GetInvoice(id) {
+            $.ajax({
+                url: '/Home/Invoice',
+                datatype: 'html',
+                method: 'GET',
+                data: { 'id': id },
+                success: function (result) {
+                    $('#table').html('');
+                  
+                    $.each(result, function (index, value) {  
+                        var body = $('#table').append(
+                            '<tr>' +
+                            '<td>' + value.document + '</td>' +
+                            '<td><a href="/ViewInvoice' + value.attchmentId + '" target="_blank" ><button class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></a></td>' +
+                            //'<td><button onclick="ViewInvoice(' + value.attchmentId + ')" class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>' +
+                            '<td><a href="/DownloadInvoice' + value.attchmentId + '"><button class="btn btn-primary" style="width:40px; margin-left:70px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>' +
+                            '</tr>' +
+                            '<tr><td>&nbsp;</td></tr>');
+                        $(".modal-body").append(body);
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+        // function ViewInvoice(id) {
+        //     debugger           
+        //     // var url = '@Url.Action("/ViewInvoice", "Home")/' + id;
+        //     // window.open(url, '_blank');
+        //     const url = `/ViewInvoice${id}`;
+        //     window.open(url, '_blank');
+
+        // }
+        function ViewInvoice(id) {
+            debugger
+            $.ajax({
+                url: '/ViewInvoice',
+                //datatype: 'html',
+                method: 'GET',
+                data: { 'id': id },
+                success: function (result) {
+                    window.open(result,'_blank');
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
         }
     </script>
     @* <script>
@@ -156,3 +243,6 @@
     </script> *@
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+ 
