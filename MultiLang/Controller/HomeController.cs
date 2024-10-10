@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Authentication;
 using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using System.IO;
+
 
 namespace MultiLang.Controllers;
 
@@ -26,7 +28,8 @@ public class HomeController : Controller
     private readonly IQuotationServices _quotationServices;
     private readonly ILoginService _loginService;
     private readonly IAttachmentServices _attachmentServices;
-    public HomeController(IEmployeeServices employeeServices, IResourceServices resourceServices, IFollowServices documentServices, IQuotationServices quotationServices, ILoginService loginService, IAttachmentServices attachmentServices)
+    private readonly IWebHostEnvironment _webHostEnvironment;
+    public HomeController(IEmployeeServices employeeServices, IResourceServices resourceServices, IFollowServices documentServices, IQuotationServices quotationServices, ILoginService loginService, IAttachmentServices attachmentServices, IWebHostEnvironment webHostEnvironment)
     {
         _employeeServices = employeeServices;
         _resourceServices = resourceServices;
@@ -34,6 +37,7 @@ public class HomeController : Controller
         _quotationServices = quotationServices;
         _loginService = loginService;
         _attachmentServices = attachmentServices;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     public IActionResult AddUser()
@@ -138,18 +142,63 @@ public class HomeController : Controller
         return Json(result);
     }
     [HttpGet]
+    [Route("/DownloadInvoice{id}")]
     public IActionResult DownloadInvoice(int id)
     {
-        
-        return new ViewAsPdf();
+        var result = _attachmentServices.Get(id);
+        var fileName = result.Document;
+        string file_path = Path.Combine(Directory.GetCurrentDirectory(), "Domain\\UploadFile\\" + fileName);
+        if (!System.IO.File.Exists(file_path))
+        {
+            return NotFound(); // Return 404 if file not found
+        }
+        byte[] document = System.IO.File.ReadAllBytes(file_path);
+        string type = "application/pdf";
+        return File(document, type, fileName);
     }
     [HttpGet]
+    [Route("/ViewInvoice{id}")]
     public IActionResult ViewInvoice(int id)
     {
+        var result = _attachmentServices.Get(id);
+        var fileName = result.Document;
+        string file_path = Path.Combine(Directory.GetCurrentDirectory(), "Domain\\UploadFile\\" + fileName);
+        if (!System.IO.File.Exists(file_path))
+        {
+            return NotFound(); // Return 404 if file not found
+        }
+        byte[] document = System.IO.File.ReadAllBytes(file_path);
+        string extansion = Path.GetExtension(file_path);
+        string type; 
+        if (extansion == ".text")
+        {
+            type = "text/plan";
+            return File(document, type);
+        }
+        if (extansion == ".txt")
+        {
+            type = "text/plan";
+            return File(document, type);
+        }
+        if (extansion == ".pdf")  
+        {
+            type = "application/pdf";
+            return File(document, type);
+        }
+        if (extansion == ".jpeg" || extansion == ".jpg")
+        {
+            type = "image/jpeg"; 
+            return File(document, type);
+        }
+        if (extansion == ".img")
+        {
+            type = "application/octet-stream";
+            return File(document, type);
+        }
 
-        return new ViewAsPdf();
+        return Content(file_path);
     }
-
+                        
     public string UploadFile(IFormFile file)
     {
         string fileName = null;
@@ -157,10 +206,20 @@ public class HomeController : Controller
         {
             if(file.Length > 0)
             {
+                string file_path = Path.Combine(Directory.GetCurrentDirectory(), "Domain\\UploadFile\\");
                 fileName = Path.GetFileName(file.FileName);
                 var fileExtention = Path.GetExtension(fileName);
                 var FileName = string.Concat(Convert.ToString(Guid.NewGuid()),fileExtention);
 
+                if (!Directory.Exists(file_path))
+                {
+                    Directory.CreateDirectory(file_path);               
+                }
+                using (FileStream fileStream = System.IO.File.Create(file_path + fileName))
+                {
+                    file.CopyTo(fileStream);
+                    fileStream.Flush();
+                }   
                 return fileName;
             }
         }
@@ -210,9 +269,9 @@ public class HomeController : Controller
     {
         if (ModelState.IsValid)
         {
-            string file = UploadFile(Document);
+            string file = UploadFile(Document);           
             model.Document = file;
-            _documentServices.Edit(model);
+            _documentServices.Edit(model);               
             return RedirectToAction("GetDocumentDtl", "Home");
         }
         return View(model);

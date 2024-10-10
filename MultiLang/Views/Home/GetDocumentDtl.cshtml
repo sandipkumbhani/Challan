@@ -180,8 +180,9 @@
                         var body = $('#table').append(
                             '<tr>' +
                             '<td>' + value.document + '</td>' +
-                            '<td><a onclick="changeimage(' + value.attchmentId + ')"><button class="btn btn-primary" style="width:40px; margin-left:149px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></a></td>' +
-                            '<td><a asp-action="DownloadInvoice" asp-controller="home"><button class="btn btn-primary" style="width:40px; margin-left:70px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>' +
+                            '<td><a href="/ViewInvoice' + value.attchmentId + '" target="_blank" ><button class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></a></td>' +
+                            //'<td><button onclick="ViewInvoice(' + value.attchmentId + ')" class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>' +
+                            '<td><a href="/DownloadInvoice' + value.attchmentId + '"><button class="btn btn-primary" style="width:40px; margin-left:70px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>' +
                             '</tr>' +
                             '<tr><td>&nbsp;</td></tr>');
                         $(".modal-body").append(body);
@@ -191,8 +192,29 @@
                     console.log(err);
                 }
             });
+        }
+        // function ViewInvoice(id) {
+        //     debugger           
+        //     // var url = '@Url.Action("/ViewInvoice", "Home")/' + id;
+        //     // window.open(url, '_blank');
+        //     const url = `/ViewInvoice${id}`;
+        //     window.open(url, '_blank');
 
-           
+        // }
+        function ViewInvoice(id) {
+            debugger
+            $.ajax({
+                url: '/ViewInvoice',
+                //datatype: 'html',
+                method: 'GET',
+                data: { 'id': id },
+                success: function (result) {
+                    window.open(result,'_blank');
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
         }
     </script>
     @* <script>
