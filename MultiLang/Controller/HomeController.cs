@@ -110,12 +110,29 @@ public class HomeController : Controller
         }
         return View("Employee");
     }
-    [HttpPost]
-    public IActionResult search(string searchtext)
+    public ActionResult searchfol(string searchtext)
     {
-        var detail = _documentServices.GetAllDocuments();
-        var result = detail.Where(x => x.DocumentNo.ToString().Contains(searchtext)).ToList();
-        return PartialView("GetDocumentDtl",result);
+        if(searchtext != null)
+        {
+            var detail = _documentServices.GetAllDocuments();
+            var result = detail.Where(x => x.DocumentNo.ToString().Contains(searchtext)).ToList().OrderBy(x => x.DocumentNo);
+            return Json(result);
+        }
+        var details= _documentServices.GetAllDocuments();
+        return Json(details);
+
+    }
+    public ActionResult searchquo(string searchtext)
+    {
+        if (searchtext != null)
+        {
+            var detail = _quotationServices.GetAllQuotation();
+            var result = detail.Where(x => x.SurveyNo.ToString().Contains(searchtext)).ToList().OrderBy(x => x.SurveyNo);
+            return Json(result);
+        }
+        var details = _quotationServices.GetAllQuotation();
+        return Json(details);
+
     }
     public IActionResult Follow(int id)
     {
@@ -139,7 +156,7 @@ public class HomeController : Controller
             {
                 fileName = Path.GetFileName(file.FileName);
                 var fileExtention = Path.GetExtension(fileName);
-                var FileName = string.Concat(Convert.ToString(Guid.NewGuid()),fileExtention);
+                //var FileName = string.Concat(Convert.ToString(Guid.NewGuid()),fileExtention);
 
                 return fileName;
             }
@@ -193,6 +210,21 @@ public class HomeController : Controller
             string file = UploadFile(Document);
             model.Document = file;
             _documentServices.Edit(model);
+            var attchment = _attachmentServices.Get(id);
+            if(attchment == null)
+            {
+                var detail = new AttachmentsViewMovel
+                {
+                    Document = file,
+                    FollowId = id,
+                };
+                _attachmentServices.Add(detail);
+            }
+            else
+            {
+                attchment.Document = file;
+                _attachmentServices.Edit(attchment);
+            }
             return RedirectToAction("GetDocumentDtl", "Home");
         }
         return View(model);
@@ -202,7 +234,11 @@ public class HomeController : Controller
         if(ModelState.IsValid)
         {
             _documentServices.Delete(id);
-            
+            var attachment = _attachmentServices.Get(id);
+            if(attachment != null)
+            {
+                _attachmentServices.Delete(id);
+            }
             return RedirectToAction("GetDocumentDtl", "Home");
         }
        
@@ -278,6 +314,21 @@ public class HomeController : Controller
             string file = UploadFile(Document);
             model.Document= file;
             _quotationServices.Edit(model);
+            var attachment = _attachmentServices.Get(id);
+            if(attachment == null)
+            {
+                var detail = new AttachmentsViewMovel
+                {
+                    Document = file,
+                    QuotationId = id,
+                };
+                _attachmentServices.Add(detail);
+            }
+            else
+            {
+                attachment.Document = file;
+                _attachmentServices.Edit(attachment);
+            }
             return RedirectToAction("GetQuotationlDtl","home");
         }
         return View(model);
@@ -288,6 +339,11 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             _quotationServices.Delete(id);
+            var attachment = _attachmentServices.Get(id);
+            if(attachment != null)
+            {
+                _attachmentServices.Delete(id);
+            }
             return RedirectToAction("GetQuotationlDtl", "home");
         }
         return View();

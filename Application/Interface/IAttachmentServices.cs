@@ -12,6 +12,7 @@ namespace Application.Interface
         public AttachmentsViewMovel Add(AttachmentsViewMovel model);
         public AttachmentsViewMovel Edit(AttachmentsViewMovel model);
         public AttachmentsViewMovel Get(int id);
+        public int Delete(int id);
 
     }
 }
