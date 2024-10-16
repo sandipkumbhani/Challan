@@ -17,6 +17,11 @@
     <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="StyleSheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>@ViewBag.Title</title>
 </head>
@@ -82,6 +87,7 @@
                     <th class="">Survey Number</th>
                     <th class="">Name</th>
                     <th class="">Date</th>
+                    <th class="">Invoice</th>
                     <th class="">Download PDF</th>
                     <th class="">Edit</th>
                     <th class="">Delete</th>
@@ -94,6 +100,7 @@
                         <td>@dtl.SurveyNo</td>
                         <td>@dtl.Name</td>
                         <td>@(dtl.App_Date.HasValue? dtl.App_Date.Value.ToString("dd MMM yyyy") : "")</td>
+                        <td><button asp-route-id="@dtl.Id" id="view" onclick="GetInvoice(@dtl.Id)" type="button" style="width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-content="New content loaded!"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>
                         <td><a asp-action="QuotationPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">Download  <i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="Quotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="DeleteQuotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-danger" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></a></td>
@@ -102,5 +109,63 @@
             </tbody>
         </table>
     </div>
+   
+    <div class="container mt-5">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Invoice Details!</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                         <table class="table table table-striped table-bordered">
+                            <thead id="thead">
+                                 <tr>
+                                    <th>Documnet Name</th>
+                                    <th>View</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table table table-striped table-bordered" id="table">
+                                                                                                                                       
+                            </tbody>
+                        </table> 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+<script>
+    function GetInvoice(id) {
+        $.ajax({
+            url: '/Home/QuotationInvoice',
+            datatype: 'html',
+            method: 'GET',
+            data: { 'id': id },
+            success: function (result) {
+                $('#table').html('');
+
+                $.each(result, function (index, value) {
+                    var body = $('#table').append(
+                        '<tr >' +
+                        '<td>' + value.document + '</td>' +
+                        '<td><a href="/ViewInvoice' + value.attchmentId + '" target="_blank" ><button class="btn btn-primary" style="width:40px; margin-left:150px; font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></a></td>' +
+                        '<td><a href="/DownloadInvoice' + value.attchmentId + '"><button class="btn btn-primary" style="width:40px; margin-left:50px; font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>' +
+                        '</tr>' );
+                    $(".modal-body").append(body);
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>

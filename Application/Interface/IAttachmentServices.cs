@@ -10,6 +10,7 @@ namespace Application.Interface
     public interface IAttachmentServices
     {
         public AttachmentsViewMovel Add(AttachmentsViewMovel model);
+        public AttachmentsViewMovel AddQuotationAttachment(AttachmentsViewMovel model);
         public AttachmentsViewMovel Edit(AttachmentsViewMovel model);
         public AttachmentsViewMovel Get(int id);
         public IEnumerable<AttachmentsViewMovel> GetAttachments();

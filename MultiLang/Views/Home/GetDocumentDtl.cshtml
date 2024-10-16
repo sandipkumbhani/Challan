@@ -8,6 +8,7 @@
 @{
     ViewBag.Title = "Follow Details";
 }
+
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
@@ -146,7 +147,7 @@
                                     <th>Download</th>
                                 </tr>
                             </thead>
-                            <tbody id="table">
+                            <tbody class="table table table-striped table-bordered"  id="table">
                                                                                                                                        
                             </tbody>
                         </table> 
@@ -157,67 +158,44 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        function Search()
-        {
-            console.log('search');
-           var searchtext = $('#searchtext').val();
-            console.log(searchtext);
-            $('#tabledata').hide();
-        }      
+    </div>    
+</body>
+</html>
+<script>
+    function Search() {
+        console.log('search');
+        var searchtext = $('#searchtext').val();
+        console.log(searchtext);
+        $('#tabledata').hide();
+    }
 
-        function GetInvoice(id) {
-            $.ajax({
-                url: '/Home/Invoice',
-                datatype: 'html',
-                method: 'GET',
-                data: { 'id': id },
-                success: function (result) {
-                    $('#table').html('');
-                  
-                    $.each(result, function (index, value) {  
-                        var body = $('#table').append(
-                            '<tr>' +
-                            '<td>' + value.document + '</td>' +
-                            '<td><a href="/ViewInvoice' + value.attchmentId + '" target="_blank" ><button class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></a></td>' +
-                            //'<td><button onclick="ViewInvoice(' + value.attchmentId + ')" class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>' +
-                            '<td><a href="/DownloadInvoice' + value.attchmentId + '"><button class="btn btn-primary" style="width:40px; margin-left:70px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>' +
-                            '</tr>' +
-                            '<tr><td>&nbsp;</td></tr>');
-                        $(".modal-body").append(body);
-                    });
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            });
-        }
-        // function ViewInvoice(id) {
-        //     debugger           
-        //     // var url = '@Url.Action("/ViewInvoice", "Home")/' + id;
-        //     // window.open(url, '_blank');
-        //     const url = `/ViewInvoice${id}`;
-        //     window.open(url, '_blank');
+    function GetInvoice(id) {
+        $.ajax({
+            url: '/Home/Invoice',
+            datatype: 'html',
+            method: 'GET',
+            data: { 'id': id },
+            success: function (result) {
+                $('#table').html('');
 
-        // }
-        function ViewInvoice(id) {
-            debugger
-            $.ajax({
-                url: '/ViewInvoice',
-                //datatype: 'html',
-                method: 'GET',
-                data: { 'id': id },
-                success: function (result) {
-                    window.open(result,'_blank');
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-            });
-        }
-    </script>
-    @* <script>
+                $.each(result, function (index, value) {
+                    var body = $('#table').append(
+                        '<tr>' +
+                        '<td>' + value.document + '</td>' +
+                        '<td><a href="/ViewInvoice' + value.attchmentId + '" target="_blank" ><button class="btn btn-primary" style="width:40px; margin-left:150px; font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></a></td>' +
+                        '<td><a href="/DownloadInvoice' + value.attchmentId + '"><button class="btn btn-primary" style="width:40px; margin-left:50px; font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>' +
+                        '</tr>');
+                    $(".modal-body").append(body);
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }   
+
+</script>
+@* <script>
         $(() => {
             window.onload = getDetail();
 
@@ -234,15 +212,10 @@
                 data: { searchtext: $('#searchtext').val() },
                 success:function(result){
                     $('#getdetails').html('').html(res);
-                },  
+                },
                 error:function(err){
                     console.log(err);
                 }
             })
         }
     </script> *@
-</body>
-</html>
-
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
- 

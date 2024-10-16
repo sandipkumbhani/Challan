@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C4D52625-8467-4C8C-918A-6A5A297EEF1E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reminder", "Reminder", "{CA320A34-8E44-47DB-B82A-793A98AADD98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reminder", "Reminder\Reminder.csproj", "{816C1B03-FD35-42D5-AAB0-5F1B717A1FF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{C4D52625-8467-4C8C-918A-6A5A297EEF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4D52625-8467-4C8C-918A-6A5A297EEF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4D52625-8467-4C8C-918A-6A5A297EEF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816C1B03-FD35-42D5-AAB0-5F1B717A1FF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816C1B03-FD35-42D5-AAB0-5F1B717A1FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816C1B03-FD35-42D5-AAB0-5F1B717A1FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816C1B03-FD35-42D5-AAB0-5F1B717A1FF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +55,7 @@ Global
 		{6F96A755-70F0-46E9-A936-F70774311251} = {654FBA8A-B892-4578-9DE5-B90AA2A4EC55}
 		{CF19385D-1D2E-4C7F-84CA-F8AE26A10826} = {B23C4865-3395-4569-BE55-FB2717383639}
 		{C4D52625-8467-4C8C-918A-6A5A297EEF1E} = {45F987F3-4B15-42E3-BD52-2CAF130FEED3}
+		{816C1B03-FD35-42D5-AAB0-5F1B717A1FF4} = {CA320A34-8E44-47DB-B82A-793A98AADD98}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {052DF4EE-DDFF-4937-98A8-812BBA064A08}

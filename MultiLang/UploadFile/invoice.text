@@ -1,0 +1,50 @@
+  function GetInvoice(id) {
+      $.ajax({
+          url: '/Home/Invoice',
+          datatype: 'html',
+          method: 'GET',
+          data: { 'id': id },
+          success: function (result) {
+              $('#table').html('');
+            
+              $.each(result, function (index, value) {  
+                  var body = $('#table').append(
+                      '<tr>' +
+                      '<td>' + value.document + '</td>' +
+                      '<td><a href="/ViewInvoice' + value.attchmentId + '"><button class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></a></td>' +
+                      '<td><a href="/DownloadInvoice' + value.attchmentId + '"><button class="btn btn-primary" style="width:40px; margin-left:70px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>' +
+                      '</tr>' +
+                      '<tr><td>&nbsp;</td></tr>');
+                  $(".modal-body").append(body);
+              });
+          },
+          error: function (err) {
+              console.log(err); 
+          }
+      });
+  }
+ -------------------
+ [HttpGet]
+ [Route("/DownloadInvoice{id}")]
+ public FileContentResult DownloadInvoice(int id)
+ {
+     var result = _attachmentServices.Get(id);
+     var fileName = result.Document;
+     var file_path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"\Domain\UploadFile\");
+     var basefile_path = Path.Combine(file_path, fileName);
+     byte[] document = System.IO.File.ReadAllBytes(basefile_path);
+     string type = "application/pdf";
+     return File(document, type, fileName);
+ }
+ [HttpGet]
+ [Route("/ViewInvoice{id}")]
+ public IActionResult ViewInvoice(int id)
+ {
+     var result = _attachmentServices.Get(id);
+     var fileName = result.Document;
+     var file_path = "C:\\Challan\\Domain\\UploadFile\\" + fileName;
+     byte[] document = System.IO.File.ReadAllBytes(file_path);
+     string type = "application/pdf";
+     return File(document, type, fileName);
+     //return Content("<script>window.open('{url}','_blank')</script>");
+ }

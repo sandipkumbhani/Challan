@@ -13,6 +13,7 @@ using System.Diagnostics.Eventing.Reader;
 using Rotativa.AspNetCore;
 using Application.Extension;
 using Infrastructure.Extension;
+using Reminder;
 using System.Web.Mvc;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
@@ -42,7 +43,7 @@ internal class Program
         {
             option.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
         });
-
+        builder.Services.AddQuartzExtensions();
         builder.Services.AddApplicationService();
         builder.Services.AddEfcoreInfrastrucureService();
         var app = builder.Build();

@@ -14,6 +14,9 @@ using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.IO;
+using System.Xml.Linq;
+using System.Linq;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace MultiLang.Controllers;
@@ -138,7 +141,6 @@ public class HomeController : Controller
     {
         var document = _documentServices.Get(id);
         var result = _attachmentServices.GetAttachments().Where(x=>x.FollowId == document.Id).ToList();
-        //return PartialView("_Invoice",result);
         return Json(result);
     }
     [HttpGet]
@@ -147,7 +149,7 @@ public class HomeController : Controller
     {
         var result = _attachmentServices.Get(id);
         var fileName = result.Document;
-        string file_path = Path.Combine(Directory.GetCurrentDirectory(), "Domain\\UploadFile\\" + fileName);
+        string file_path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile\\" + fileName);
         if (!System.IO.File.Exists(file_path))
         {
             return NotFound(); // Return 404 if file not found
@@ -162,7 +164,7 @@ public class HomeController : Controller
     {
         var result = _attachmentServices.Get(id);
         var fileName = result.Document;
-        string file_path = Path.Combine(Directory.GetCurrentDirectory(), "Domain\\UploadFile\\" + fileName);
+        string file_path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile\\" + fileName);
         if (!System.IO.File.Exists(file_path))
         {
             return NotFound(); // Return 404 if file not found
@@ -170,12 +172,7 @@ public class HomeController : Controller
         byte[] document = System.IO.File.ReadAllBytes(file_path);
         string extansion = Path.GetExtension(file_path);
         string type; 
-        if (extansion == ".text")
-        {
-            type = "text/plan";
-            return File(document, type);
-        }
-        if (extansion == ".txt")
+        if (extansion == ".text" || extansion == ".txt")
         {
             type = "text/plan";
             return File(document, type);
@@ -195,8 +192,7 @@ public class HomeController : Controller
             type = "application/octet-stream";
             return File(document, type);
         }
-
-        return Content(file_path);
+        return NotFound();
     }
                         
     public string UploadFile(IFormFile file)
@@ -206,7 +202,7 @@ public class HomeController : Controller
         {
             if(file.Length > 0)
             {
-                string file_path = Path.Combine(Directory.GetCurrentDirectory(), "Domain\\UploadFile\\");
+                string file_path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile\\");
                 fileName = Path.GetFileName(file.FileName);
                 var fileExtention = Path.GetExtension(fileName);
                 var FileName = string.Concat(Convert.ToString(Guid.NewGuid()),fileExtention);
@@ -252,29 +248,41 @@ public class HomeController : Controller
 
             };
             _documentServices.Add(details);
-            var followid = details.Id;
-            var detail = new AttachmentsViewMovel
+            if(file != null)
             {
-                Document = file,
-                FollowId= followid,
-            };
-            _attachmentServices.Add(detail);
+                var detail = new AttachmentsViewMovel
+                {
+                    Document = file,
+                    FollowId = details.Id
+                };
+                _attachmentServices.Add(detail);
+            }           
             return RedirectToAction("Follow", "Home");
         }
         return View("Follow");
     }
 
     [HttpPost]
-    public IActionResult EditFollow(DocumentViewModel model,int id, IFormFile Document)
+    public IActionResult EditFollow(DocumentViewModel model,IFormFile? Document)
     {
         if (ModelState.IsValid)
         {
             string file = UploadFile(Document);           
-            model.Document = file;
-            _documentServices.Edit(model);               
-            return RedirectToAction("GetDocumentDtl", "Home");
+            model.Document = file;            
+            _documentServices.Edit(model);
+            if(file != null)
+            {
+                var detail = new AttachmentsViewMovel
+                {
+                    Document = file,
+                    FollowId = model.Id
+                };
+                _attachmentServices.Edit(detail);
+            }           
+            
+            return RedirectToAction("GetDocumentDtl", "Home"); 
         }
-        return View(model);
+        return View("Follow",model);
     }
     public IActionResult DelFollow(int id)
     {
@@ -328,38 +336,55 @@ public class HomeController : Controller
         return View(model);
     }
 
+    [HttpGet]
+    public IActionResult QuotationInvoice(int id)
+    {
+        var document = _quotationServices.Get(id);
+        var result = _attachmentServices.GetAttachments().Where(x => x.QuotationId == document.Id).ToList();
+        return Json(result);
+    }
+
     [HttpPost]
     public IActionResult AddQuotation(QuotationViewModel model,IFormFile Document)
     {
         if(ModelState.IsValid)
         {
             string file = UploadFile(Document);
-            model.Document = file;
-            
+            model.Document = file;            
             _quotationServices.Add(model);
-
-            var quotationid = model.Id;
-            var detail = new AttachmentsViewMovel
+            if(file != null)
             {
-                Document=file,
-                QuotationId=quotationid,
-            };
-            _attachmentServices.Add(detail);
+                var detail = new AttachmentsViewMovel
+                {
+                    Document = file,
+                    QuotationId = model.Id
+                };
+                _attachmentServices.AddQuotationAttachment(detail);
+            }         
             return RedirectToAction("Quotation", "Home");
         }
         return View("Quotation");
     }
     [HttpPost]
-    public IActionResult EditQuotation(QuotationViewModel model,int id, IFormFile Document)
+    public IActionResult EditQuotation(QuotationViewModel model,IFormFile? Document)
     {
         if(ModelState.IsValid)
         {
             string file = UploadFile(Document);
-            model.Document= file;
+            model.Document = file;
             _quotationServices.Edit(model);
+            if(file != null)
+            {
+                var detail = new AttachmentsViewMovel()
+                {
+                    Document = file,
+                    QuotationId = model.Id
+                };
+                _attachmentServices.AddQuotationAttachment(detail);
+            }             
             return RedirectToAction("GetQuotationlDtl","home");
         }
-        return View(model);
+        return View("Quotation",model);
     }
 
     public IActionResult DeleteQuotation(int id)

@@ -20,6 +20,10 @@ namespace Application.Providers
         {
             return  _attachment.AddAttachment(model);
         }
+        public AttachmentsViewMovel AddQuotationAttachment(AttachmentsViewMovel model)
+        {
+            return _attachment.AddQuotationAttachment(model);
+        }
 
         public AttachmentsViewMovel Edit(AttachmentsViewMovel model)
         {
