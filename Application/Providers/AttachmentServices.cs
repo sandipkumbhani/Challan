@@ -25,6 +25,18 @@ namespace Application.Providers
             return _attachment.AddQuotationAttachment(model);
         }
 
+        public int Delete(int id)
+        {
+            var result = _attachment.GetAttachment(id);
+            if (result != null)
+            {
+                result.StatusId = 0;
+                _attachment.DeleteAttachment(result);
+                return 1;
+            }
+            return 0;
+        }
+
         public AttachmentsViewMovel Edit(AttachmentsViewMovel model)
         {
             return _attachment.EditAttachment(model);

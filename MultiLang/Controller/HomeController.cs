@@ -117,12 +117,29 @@ public class HomeController : Controller
         }
         return View("Employee");
     }
-    [HttpPost]
-    public IActionResult search(string searchtext)
+    public ActionResult searchfol(string searchtext)
     {
-        var detail = _documentServices.GetAllDocuments();
-        var result = detail.Where(x => x.DocumentNo.ToString().Contains(searchtext)).ToList();
-        return PartialView("GetDocumentDtl",result);
+        if(searchtext != null)
+        {
+            var detail = _documentServices.GetAllDocuments();
+            var result = detail.Where(x => x.DocumentNo.ToString().Contains(searchtext)).ToList().OrderBy(x => x.DocumentNo);
+            return Json(result);
+        }
+        var details= _documentServices.GetAllDocuments();
+        return Json(details);
+
+    }
+    public ActionResult searchquo(string searchtext)
+    {
+        if (searchtext != null)
+        {
+            var detail = _quotationServices.GetAllQuotation();
+            var result = detail.Where(x => x.SurveyNo.ToString().Contains(searchtext)).ToList().OrderBy(x => x.SurveyNo);
+            return Json(result);
+        }
+        var details = _quotationServices.GetAllQuotation();
+        return Json(details);
+
     }
     public IActionResult Follow(int id)
     {
@@ -205,7 +222,7 @@ public class HomeController : Controller
                 string file_path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile\\");
                 fileName = Path.GetFileName(file.FileName);
                 var fileExtention = Path.GetExtension(fileName);
-                var FileName = string.Concat(Convert.ToString(Guid.NewGuid()),fileExtention);
+                //var FileName = string.Concat(Convert.ToString(Guid.NewGuid()),fileExtention);
 
                 if (!Directory.Exists(file_path))
                 {
@@ -268,19 +285,24 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             string file = UploadFile(Document);           
-            model.Document = file;            
+            model.Document = file;
             _documentServices.Edit(model);
-            if(file != null)
+            var attchment = _attachmentServices.Get(id);
+            if(attchment == null)
             {
                 var detail = new AttachmentsViewMovel
                 {
                     Document = file,
-                    FollowId = model.Id
+                    FollowId = id,
                 };
-                _attachmentServices.Edit(detail);
-            }           
-            
-            return RedirectToAction("GetDocumentDtl", "Home"); 
+                _attachmentServices.Add(detail);
+            }
+            else
+            {
+                attchment.Document = file;
+                _attachmentServices.Edit(attchment);
+            }
+            return RedirectToAction("GetDocumentDtl", "Home");
         }
         return View("Follow",model);
     }
@@ -289,7 +311,11 @@ public class HomeController : Controller
         if(ModelState.IsValid)
         {
             _documentServices.Delete(id);
-            
+            var attachment = _attachmentServices.Get(id);
+            if(attachment != null)
+            {
+                _attachmentServices.Delete(id);
+            }
             return RedirectToAction("GetDocumentDtl", "Home");
         }
        
@@ -373,15 +399,21 @@ public class HomeController : Controller
             string file = UploadFile(Document);
             model.Document = file;
             _quotationServices.Edit(model);
-            if(file != null)
+            var attachment = _attachmentServices.Get(id);
+            if(attachment == null)
             {
-                var detail = new AttachmentsViewMovel()
+                var detail = new AttachmentsViewMovel
                 {
                     Document = file,
-                    QuotationId = model.Id
+                    QuotationId = id,
                 };
-                _attachmentServices.AddQuotationAttachment(detail);
-            }             
+                _attachmentServices.Add(detail);
+            }
+            else
+            {
+                attachment.Document = file;
+                _attachmentServices.Edit(attachment);
+            }
             return RedirectToAction("GetQuotationlDtl","home");
         }
         return View("Quotation",model);
@@ -392,6 +424,11 @@ public class HomeController : Controller
         if (ModelState.IsValid)
         {
             _quotationServices.Delete(id);
+            var attachment = _attachmentServices.Get(id);
+            if(attachment != null)
+            {
+                _attachmentServices.Delete(id);
+            }
             return RedirectToAction("GetQuotationlDtl", "home");
         }
         return View();

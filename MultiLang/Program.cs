@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Authentication;
 using Azure.Core;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
+using Quartz;
 
 internal class Program
 {

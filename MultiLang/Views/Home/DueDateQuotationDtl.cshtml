@@ -85,10 +85,12 @@
         <table class="table table-borded">
             <thead>
                 <tr>
-                    <th class="col-1">Survey Number</th>
-                    <th class="col-1">Name</th>
-                    <th class="col-1">Date</th>
-                    <th class="col-3">Download PDF</th>
+                    <th class="">Survey Number</th>
+                    <th class="">Name</th>
+                    <th class="">Date</th>
+                    <th class="">Download PDF</th>
+                    <th class="">Edit</th>
+                    <th class="">Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -97,8 +99,10 @@
                     <tr>
                         <td>@dtl.SurveyNo</td>
                         <td>@dtl.Name</td>
-                        <td>@dtl.App_Date</td>
-                        <td><a asp-action="QuotationPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small;">Download  <i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
+                        <td>@(dtl.App_Date.HasValue ? dtl.App_Date.Value.ToString("dd MMM yyyy") : "")</td>
+                        <td><a asp-action="QuotationPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-left:15px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
+                        <td><a asp-action="Quotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
+                        <td><a asp-action="DeleteQuotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-danger" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></a></td>
                     </tr>
                 }
             </tbody>
