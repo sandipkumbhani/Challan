@@ -61,7 +61,7 @@ namespace Infrastructure.Provider
 
         public AttachmentsViewMovel GetAttachment(int id)
         {
-           return _context.Attachments.Where(x => x.FollowId == id || x.QuotationId == id).FirstOrDefault();
+           return _context.Attachments.Where(x => x.FollowId == id || x.QuotationId == id || x.AttchmentId==id).FirstOrDefault();
         }
         public IEnumerable<AttachmentsViewMovel> GetAttachments()
         {

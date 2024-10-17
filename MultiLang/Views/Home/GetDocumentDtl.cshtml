@@ -129,13 +129,13 @@
                         <td>@(dtl.Date.HasValue ? dtl.Date.Value.ToString("dd MMM yyyy") : "")</td>
                         <td><button asp-route-id="@dtl.Id" id="view" onclick="GetInvoice(@dtl.Id)" type="button" style="width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-content="New content loaded!"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>
                         @*<td><a asp-action="Invoice" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">  <i class="fa-solid fa-file-invoice" style="color: #ffffff;" data-toggle="modal" data-target="#myModal" data-content="New content loaded!"></i></button></a></td>*@
-                        <td><a asp-action="FollowPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
+                        <td><a asp-action="FollowPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="margin-left:30px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="Follow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="DelFollow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-danger" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></a></td>
                     </tr>
                 }
             </tbody>
-        </table>
+        </table>    
     </div>
     <div class="container mt-5">
         <!-- Modal -->
@@ -200,12 +200,12 @@
                             + "<td>" + dtl.documentNo + "</td>"
                             + "<td>" + dtl.documentType + "</td>"
                             + "<td>" + formattedDate + "</td>"
+                            + "<td>" + "<button  id='view' onclick='GetInvoice(" + dtl.id + ")' type='button' style='width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px; font-size:small;' class='btn btn-primary' data-toggle='modal' data-target='#myModal' data-content='New content loaded!'><i class='fa-solid fa-file-invoice' style='color:#ffffff;'></i></button>" + "</td>"
                             + "<td>" + "<a href='https://localhost:7037/home/FollowPDF/ " + dtl.id + "'><button class='btn btn-primary' style = 'height: 35px; margin-top:-7px; margin-left:15px; margin-bottom:-7px; font-size:small'><i class='fa-solid fa-download' style = 'color:#ffffff;'></i></button ></a>" + "</td>"
                             + "<td>" + "<a href='https://localhost:7037/home/Follow/ " + dtl.id + "'><button class='btn btn-primary' style='height: 35px; margin-top: -7px; margin-bottom:-7px; font-size:small'><i class='fa-regular fa-pen-to-square' style='color:#ffffff;'></i></button></a>" + "</td>"
                             + "<td>" + "<a href='https://localhost:7037/home/DelFollow/ " + dtl.id + "''><button class='btn btn-danger' style='height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px; font-size:small'><i class='fa-solid fa-trash-can' style='color:#ffffff;'></i></button>" + "</td>"
                         $("#tabledata tbody").append(row);
                     });
-
                 }
             });
         }
