@@ -280,7 +280,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult EditFollow(DocumentViewModel model,IFormFile? Document)
+    public IActionResult EditFollow(DocumentViewModel model,int id,IFormFile? Document)
     {
         if (ModelState.IsValid)
         {
@@ -392,7 +392,7 @@ public class HomeController : Controller
         return View("Quotation");
     }
     [HttpPost]
-    public IActionResult EditQuotation(QuotationViewModel model,IFormFile? Document)
+    public IActionResult EditQuotation(QuotationViewModel model,int id,IFormFile? Document)
     {
         if(ModelState.IsValid)
         {
