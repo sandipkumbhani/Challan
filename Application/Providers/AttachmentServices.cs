@@ -42,5 +42,9 @@ namespace Application.Providers
         {
             return _attachment.GetAttachment(id);
         }
+        public IEnumerable<AttachmentsViewMovel> GetAttachments()
+        {
+            return _attachment.GetAttachments();
+        }
     }
 }

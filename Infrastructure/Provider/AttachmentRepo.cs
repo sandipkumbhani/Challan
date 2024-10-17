@@ -42,5 +42,11 @@ namespace Infrastructure.Provider
         {
            return _context.Attachments.Where(x => x.FollowId == id || x.QuotationId == id).FirstOrDefault();
         }
+        public IEnumerable<AttachmentsViewMovel> GetAttachments()
+        {
+            var result = _context.Attachments.ToList();
+            return result;
+        }
+      
     }
 }

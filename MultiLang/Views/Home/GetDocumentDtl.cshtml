@@ -9,30 +9,30 @@
     ViewBag.Title = "Follow Details";
 }
 <html>
-    <head>
-   
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
 
-
-
-
-        <meta name="viewport" content="width=device-width" />
-        <link href="~/css/stylesheet.css" rel="stylesheet" />
-        <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="~/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
-        <link href="~/lib/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
-        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-   
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/jquery/jquery.slim.min.js"></script>
     <script src="~/lib/jquery/jquery.slim.js"></script>
     <script src="~/lib/jquery/jquery.js"></script>
-     
-        <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-        <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/wwwroot/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="StyleSheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <title>@ViewBag.Title</title>
-    </head>
-    <body >
+    <title>@ViewBag.Title</title>
+</head>
+<body>
     <div class="" style="display:flex; margin-left:1172px;">
         <div class="form-check">
             <a class="link" for="flexRadioDefault1" asp-controller="home" asp-action="ChangeLanguage" asp-route-lang="en">
@@ -45,15 +45,14 @@
             </a>
         </div>
         <div>
-           
         </div>
     </div>
-    <div class="container-fluid" style= "margin-top: -30px;">
-        
+    <div class="container-fluid" style="margin-top: -30px;">
+
         <div class="row flex-nowrap">
             <div class="d-flex flex-column  flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;height:600px;">
                 <a href="https://localhost:7037/home/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                    
+
                     <span class="fs-4">CHALAN Reminder</span>
                 </a>
                 <hr>
@@ -81,63 +80,94 @@
         </div>
     </div>
     <div class="rightSide">
-       
-            <header>
-                <h4 style="padding: 1px;">
-                    Follow
-                </h4>
-            </header>
-        
+
+        <header>
+            <h4 style="padding: 1px;">
+                Follow
+            </h4>
+        </header>
+
         <a asp-action="Follow" asp-controller="home"><button class="btn btn-primary" style="font-size:small;">ADD <i class="fa-solid fa-plus" style="color: #ffffff;"></i></button></a>
         <a asp-action="DueDateFollowDtl" asp-controller="home"><button class="btn btn-primary" style="font-size:small;">Show DueDate  <i class="fa-solid fa-filter" style="color: #ffffff;"></i></button></a>
         <a asp-action="GetDocumentDtl" asp-controller="home"><button class="btn btn-primary" style="width:70px;font-size:small;">All</button></a>
 
-         <div class="row">
-             <div class="col-md-2">
+        <div class="row">
+            <div class="col-md-2">
                 <div class="form-inline smallsize" style=" display: flex;">
-                    <input type="text" onkeyup="Search()"  class="form-control smallsize" id="searchtext" placeholder="Search.." style="margin:10px 0px -10px 0px;">
-                    <button id="search"  class="btn" style="margin-left: -40px">
+                    <input type="text" onkeyup="Search()" class="form-control smallsize" id="searchtext" placeholder="Search.." style="margin:10px 0px -10px 0px;">
+                    <button id="search" class="btn" style="margin-left: -40px">
                         <i class="fa-solid fa-magnifying-glass" style="color: #74C0FC;"></i>
                     </button>
-                   
-                 </div>
-             </div>
-         </div>
 
-            
-           
-            <table class="table table-borded" id="tabledata" >
-                <thead >
-                    <tr>
+                </div>
+            </div>
+        </div>
+
+
+
+        <table class="table table-borded" id="tabledata">
+            <thead>
+                <tr>
                     <th class="">Document No.</th>
                     <th class="">Document Type</th>
                     <th class="">Date</th>
+                    <th class="">Invoice</th>
                     <th class="">Download PDF</th>
                     <th class="">Edit</th>
                     <th class="">Delete</th>
-                    </tr>
-                </thead>
+                </tr>
+            </thead>
             <tbody>
                 <div id="getdetails" style="margin-left:400px; color:blue; font-size:1rem;"></div>
                 @foreach (var dtl in Model)
                 {
-                   
+
                     <tr>
                         <td>@dtl.DocumentNo</td>
                         <td>@dtl.DocumentType</td>
-                        <td>@(dtl.Date.HasValue?dtl.Date.Value.ToString("dd MMM yyyy") : "")</td>
-                        <td><a asp-action="FollowPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="height:35px; margin-top:-7px; margin-left:15px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
-                        <td><a asp-action="Follow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
+                        <td>@(dtl.Date.HasValue ? dtl.Date.Value.ToString("dd MMM yyyy") : "")</td>
+                        <td><button asp-route-id="@dtl.Id" id="view" onclick="GetInvoice(@dtl.Id)" type="button" style="width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-content="New content loaded!"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>
+                        @*<td><a asp-action="Invoice" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">  <i class="fa-solid fa-file-invoice" style="color: #ffffff;" data-toggle="modal" data-target="#myModal" data-content="New content loaded!"></i></button></a></td>*@
+                        <td><a asp-action="FollowPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
+                        <td><a asp-action="Follow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="DelFollow" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-danger" style=" height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button></a></td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-      
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-   
+    <div class="container mt-5">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Invoice Details!</h5>
+                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table table-striped table-bordered">
+                            <thead id="thead">
+                                <tr>
+                                    <th>Documnet Name</th>
+                                    <th>View</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function Search(){
+        function Search() {
 
             $("#tabledata thead").show();
             $("#getdetails").html("");
@@ -145,11 +175,11 @@
             $.ajax({
                 url: '/Home/searchfol',
                 dataType: "json",
-                data: {searchtext},
-                success: function (result,details) {
+                data: { searchtext },
+                success: function (result, details) {
                     $("#tabledata tbody").empty();
                     if (searchtext == null) {
-                        
+
                         $("#tabledata tbody").append(details);
                     }
                     if (result.length == 0) {
@@ -157,7 +187,7 @@
                         $("#tabledata thead").hide();
                         $("#getdetails").html("Data does not exist");
                     }
-                   
+
                     $.each(result, function (i, dtl) {
                         var dates = new Date(dtl.date);
                         var formattedDate = new Intl.DateTimeFormat('en-GB', {
@@ -169,17 +199,61 @@
                             + "<td>" + dtl.documentNo + "</td>"
                             + "<td>" + dtl.documentType + "</td>"
                             + "<td>" + formattedDate + "</td>"
-                            + "<td>" + "<a href='https://localhost:7037/home/FollowPDF/ "+ dtl.id+ "'><button class='btn btn-primary' style = 'height: 35px; margin-top:-7px; margin-left:15px; margin-bottom:-7px; font-size:small'><i class='fa-solid fa-download' style = 'color:#ffffff;'></i></button ></a>" + "</td>"
+                            + "<td>" + "<a href='https://localhost:7037/home/FollowPDF/ " + dtl.id + "'><button class='btn btn-primary' style = 'height: 35px; margin-top:-7px; margin-left:15px; margin-bottom:-7px; font-size:small'><i class='fa-solid fa-download' style = 'color:#ffffff;'></i></button ></a>" + "</td>"
                             + "<td>" + "<a href='https://localhost:7037/home/Follow/ " + dtl.id + "'><button class='btn btn-primary' style='height: 35px; margin-top: -7px; margin-bottom:-7px; font-size:small'><i class='fa-regular fa-pen-to-square' style='color:#ffffff;'></i></button></a>" + "</td>"
                             + "<td>" + "<a href='https://localhost:7037/home/DelFollow/ " + dtl.id + "''><button class='btn btn-danger' style='height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px; font-size:small'><i class='fa-solid fa-trash-can' style='color:#ffffff;'></i></button>" + "</td>"
                         $("#tabledata tbody").append(row);
                     });
 
-               }
+                }
+            });
+        }
+
+        function GetInvoice(id) {
+            $.ajax({
+                url: '/Home/Invoice',
+                datatype: 'html',
+                method: 'GET',
+                data: { 'id': id },
+                success: function (result) {
+                    $('#table').html('');
+
+                    $.each(result, function (index, value) {
+                        var body = $('#table').append(
+                            '<tr>' +
+                            '<td>' + value.document + '</td>' +
+                            '<td><a href="/ViewInvoice' + value.attchmentId + '" target="_blank" ><button class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></a></td>' +
+                            //'<td><button onclick="ViewInvoice(' + value.attchmentId + ')" class="btn btn-primary" style="width:40px; margin-left:188px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>' +
+                            '<td><a href="/DownloadInvoice' + value.attchmentId + '"><button class="btn btn-primary" style="width:40px; margin-left:70px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>' +
+                            '</tr>' +
+                            '<tr><td>&nbsp;</td></tr>');
+                        $(".modal-body").append(body);
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function ViewInvoice(id) {
+            debugger
+            $.ajax({
+                url: '/ViewInvoice',
+                //datatype: 'html',
+                method: 'GET',
+                data: { 'id': id },
+                success: function (result) {
+                    window.open(result, '_blank');
+                },
+                error: function (err) {
+                    console.log(err);
+                }
             });
         }
     </script>
 
-   
 </body>
 </html>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
