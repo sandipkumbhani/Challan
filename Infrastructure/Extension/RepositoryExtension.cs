@@ -22,23 +22,6 @@ namespace Infrastructure.Extension
             services.AddScoped<IQuotationRepo, QuotationRepo>();
             services.AddScoped<ILoginRepo, LoginRepo>();
             services.AddScoped<IAttachmentRepo, AttachmentRepo>();
-
-            services.AddQuartz(Options =>
-            {
-                Options.UseMicrosoftDependencyInjectionJobFactory();
-
-                var jobkey = JobKey.Create(nameof(SendMailJob));
-
-                Options.AddJob<SendMailJob>(jobkey)
-                       .AddTrigger(t => t.ForJob(jobkey)
-                                          .WithSimpleSchedule(s =>
-                                           s.WithIntervalInMinutes(1).RepeatForever()));
-            });
-            services.AddQuartzHostedService(Options =>
-            {
-                Options.WaitForJobsToComplete = true;
-            });
-
             return services;
         }
     }
