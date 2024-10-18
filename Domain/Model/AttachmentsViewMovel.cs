@@ -17,5 +17,7 @@ namespace Domain.Model
         public int? QuotationId { get; set; } = null;
         public virtual QuotationViewModel Quotation { get; set; }
 
+        public int StatusId { get; set; } = 1;
+
     }
 }
