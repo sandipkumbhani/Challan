@@ -41,6 +41,13 @@ namespace Infrastructure.Provider
             return model;
         }
 
+        public AttachmentsViewMovel DeleteAttachment(AttachmentsViewMovel model)
+        {
+            _context.Update(model);
+            _context.SaveChanges();
+            return model;
+        }
+
         public AttachmentsViewMovel EditAttachment(AttachmentsViewMovel model)
         {
             var result = GetAttachments().FirstOrDefault(x=>x.FollowId == model.FollowId && x.Document == model.Document);
@@ -54,7 +61,7 @@ namespace Infrastructure.Provider
 
         public AttachmentsViewMovel GetAttachment(int id)
         {
-           return _context.Attachments.Find(id);
+           return _context.Attachments.Where(x => x.FollowId == id || x.QuotationId == id).FirstOrDefault();
         }
         public IEnumerable<AttachmentsViewMovel> GetAttachments()
         {

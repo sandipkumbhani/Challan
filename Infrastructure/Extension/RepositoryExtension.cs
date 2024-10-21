@@ -3,6 +3,8 @@ using Application.Providers;
 using Domain.Interface;
 using Infrastructure.Provider;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
