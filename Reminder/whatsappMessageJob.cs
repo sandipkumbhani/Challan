@@ -28,7 +28,6 @@ namespace Reminder
         public async Task Execute(IJobExecutionContext context)
         {
 
-
             const string accountSid = "AC14d03dd38a0b8438cc434d3ca677ffe6";
             const string token = "faf2e0264aa20b1a23679449b5778f1e";
 
