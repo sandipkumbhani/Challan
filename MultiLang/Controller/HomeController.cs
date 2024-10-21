@@ -94,7 +94,7 @@ public class HomeController : Controller
 
     public IActionResult Dashboard()
     {
-        return View();
+        return View(_resourceServices.GetAllResources());
     }
     public IActionResult Employee()
     {
@@ -399,8 +399,14 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult GetQuotationlDtl()
     {
+        var resource = _resourceServices.GetAllResources();
         var details =_quotationServices.GetAllQuotation();
-        return View(details);
+        var model = new ResorcesQuotationViewModel
+        {
+            Resource = resource,
+            Quotations = details
+        };
+        return View(model);
     }
 
     [HttpGet]

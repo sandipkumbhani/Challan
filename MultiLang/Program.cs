@@ -43,6 +43,7 @@ internal class Program
         {
             option.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection"));
         });
+        builder.Services.AddScoped<IEmailBackGroudInterface,EmailBackGroudProvider>();
         builder.Services.AddQuartzExtensions();
         builder.Services.AddApplicationService();
         builder.Services.AddEfcoreInfrastrucureService();

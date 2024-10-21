@@ -120,6 +120,15 @@
   <data name="Address" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="Quotation" xml:space="preserve">
+    <value>Quotation</value>
+  </data>
+  <data name="Follow" xml:space="preserve">
+    <value>Follow</value>
+  </data>
+  <data name="Follow" xml:space="preserve">
+    <value>દસ્તાવેજ </value>
+  </data>
   <data name="Agreement of Rent" xml:space="preserve">
     <value>Agreement of Rent</value>
   </data>
