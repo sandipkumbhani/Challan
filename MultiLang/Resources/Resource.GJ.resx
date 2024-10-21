@@ -201,6 +201,9 @@
   <data name="Entry Details in Revenue Record" xml:space="preserve">
     <value>રેવન્યુ રેકોર્ડમાં એન્ટ્રીની વિગત</value>
   </data>
+  <data name="Follow" xml:space="preserve">
+    <value>દસ્તાવેજ</value>
+  </data>
   <data name="Gift" xml:space="preserve">
     <value>બક્ષીસ</value>
   </data>

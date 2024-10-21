@@ -41,7 +41,7 @@
         <div class="row flex-nowrap">
             <div class="d-flex flex-column  flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;height:600px;">
                 <a href="https://localhost:7037/home/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                    <span class="fs-4">CHALAN Reminder</span>
+                    <span class="fs-4">K B Chauhan</span>
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -235,13 +235,13 @@
                             <div class="col">
                                 <div class="rado" style="display:flex;">
                                     <div class="form-check ">
-                                        <input class="form-check-input" type="radio" name="Con_Amount_Dtl" value="@Model.Resource["Cash"]" id="Con_Amount_Dtl1">
+                                        <input class="form-check-input" type="radio" name="Con_Amount_Dtl" value="@Model.Resource["Cash"]" id="Con_Amount_Dtl1" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.Con_Amount_Dtl == "Cash" ? "checked" : "")>
                                         <label class="form-check-label" for="Con_Amount_Dtl1">
                                             @Model.Resource["Cash"]
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="Con_Amount_Dtl" value="@Model.Resource["Online"]" id="Con_Amount_Dtl2">
+                                        <input class="form-check-input" type="radio" name="Con_Amount_Dtl" value="@Model.Resource["Online"]" id="Con_Amount_Dtl2" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.Con_Amount_Dtl == "Online" ? "checked" : "")>
                                         <label class="form-check-label" for="Con_Amount_Dtl2">
                                             @Model.Resource["Online"]
                                         </label>
@@ -261,13 +261,13 @@
                             <div class="col m-3">
                                 <div class="rado" style="display:flex;">
                                     <div class="form-check ">
-                                        <input class="form-check-input" type="radio" name="layout" value="@Model.Resource["Pending"]" id="layout1">
+                                        <input class="form-check-input" type="radio" name="layout" value="@Model.Resource["Pending"]" id="layout1" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.layout == "Pending" ? "checked" : "")>
                                         <label class="form-check-label" for="layout1">
                                             @Model.Resource["Pending"]
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="layout" value="@Model.Resource["Ok"]" id="layout2">
+                                        <input class="form-check-input" type="radio" name="layout" value="@Model.Resource["Ok"]" id="layout2" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.Con_Amount_Dtl == "Ok" ? "checked" : "")>
                                         <label class="form-check-label" for="layout2">
                                             @Model.Resource["Ok"]
                                         </label>
@@ -284,13 +284,13 @@
                                 <div class="col">
                                     <div class="rado" style="display:flex; margin-left:-40px;">
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="radio" name="uncultivat_appli" value="@Model.Resource["Remaining"]" id="uncultivat_appli1">
+                                            <input class="form-check-input" type="radio" name="uncultivat_appli" value="@Model.Resource["Remaining"]" id="uncultivat_appli1" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.uncultivat_appli == "Remaining" ? "checked" : "")>
                                             <label class="form-check-label" for="uncultivat_appli1">
                                                 @Model.Resource["Remaining"]
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="uncultivat_appli" value="@Model.Resource["Complete"]" id="uncultivat_appli2">
+                                            <input class="form-check-input" type="radio" name="uncultivat_appli" value="@Model.Resource["Complete"]" id="uncultivat_appli2" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.uncultivat_appli == "Complete" ? "checked" : "")>
                                             <label class="form-check-label" for="uncultivat_appli2">
                                                 @Model.Resource["Complete"]
                                             </label>
@@ -306,13 +306,13 @@
                                 <div class="col">
                                     <div class="rado" style="display:flex; margin-left:-40px;">
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="radio" name="Measurment_appli" value="@Model.Resource["Remaining"]" id="Measurment_appli1">
+                                            <input class="form-check-input" type="radio" name="Measurment_appli" value="@Model.Resource["Remaining"]" id="Measurment_appli1" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.Measurment_appli == "Remaining" ? "checked" : "")>
                                             <label class="form-check-label" for="Measurment_appli1">
                                                 @Model.Resource["Remaining"]
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="Measurment_appli" value="@Model.Resource["Complete"]" id="Measurment_appli2">
+                                            <input class="form-check-input" type="radio" name="Measurment_appli" value="@Model.Resource["Complete"]" id="Measurment_appli2" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.Measurment_appli == "Complete" ? "checked" : "")>
                                             <label class="form-check-label" for="Measurment_appli2">
                                                 @Model.Resource["Complete"]
                                             </label>
@@ -328,13 +328,13 @@
                                 <div class="col">
                                     <div class="rado" style="display:flex; margin-left:-40px;">
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="radio" name="ConversionTax" value="@Model.Resource["Remaining"]" id="ConversionTax1">
+                                            <input class="form-check-input" type="radio" name="ConversionTax" value="@Model.Resource["Remaining"]" id="ConversionTax1" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.ConversionTax == "Remaining" ? "checked" : "")>
                                             <label class="form-check-label" for="ConversionTax1">
                                                 @Model.Resource["Remaining"]
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="ConversionTax" value="@Model.Resource["Complete"]" id="ConversionTax2">
+                                            <input class="form-check-input" type="radio" name="ConversionTax" value="@Model.Resource["Complete"]" id="ConversionTax2" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.ConversionTax == "Complete" ? "checked" : "")>
                                             <label class="form-check-label" for="ConversionTax2">
                                                 @Model.Resource["Complete"]
                                             </label>
@@ -350,13 +350,13 @@
                                 <div class="col">
                                     <div class="rado" style="display:flex; margin-left:-40px;">
                                         <div class="form-check ">
-                                            <input class="form-check-input" type="radio" name="lay_out" value="@Model.Resource["Remaining"]" id="lay_out1">
+                                            <input class="form-check-input" type="radio" name="lay_out" value="@Model.Resource["Remaining"]" id="lay_out1" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.lay_out == "Remaining" ? "checked" : "")>
                                             <label class="form-check-label" for="lay_out1">
                                                 @Model.Resource["Remaining"]
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="lay_out" value="@Model.Resource["Complete"]" id="lay_out2">
+                                            <input class="form-check-input" type="radio" name="lay_out" value="@Model.Resource["Complete"]" id="lay_out2" @(Model.Quotaion != null && Model.Quotaion.Id != 0 && Model.Quotaion.lay_out == "Complete" ? "checked" : "")>
                                             <label class="form-check-label" for="lay_out2">
                                                 @Model.Resource["Complete"]
                                             </label>

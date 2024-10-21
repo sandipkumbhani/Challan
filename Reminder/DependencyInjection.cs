@@ -12,10 +12,18 @@ namespace Reminder
         {
             service.AddQuartz(option =>
             {
+
                 var jobKey = JobKey.Create(nameof(EmailBackGroundJob));
 
                 var result = option.AddJob<EmailBackGroundJob>(jobBuilder => jobBuilder.WithIdentity(jobKey))
                 .AddTrigger(x => x.ForJob(jobKey)
+                .WithSimpleSchedule(x => x.WithIntervalInHours(24)
+                .RepeatForever()));
+
+                var jobKey2 = JobKey.Create(nameof(whatsappMessageJob));
+
+                var result2 = option.AddJob<whatsappMessageJob>(jobBuilder => jobBuilder.WithIdentity(jobKey2))
+                .AddTrigger(x => x.ForJob(jobKey2)
                 .WithSimpleSchedule(x => x.WithIntervalInHours(24)
                 .RepeatForever()));
             });

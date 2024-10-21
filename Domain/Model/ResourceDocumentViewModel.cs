@@ -9,6 +9,7 @@ namespace Domain.Model
     public class ResourceDocumentViewModel
     {
         public DocumentViewModel Document { get; set; }
+        public IEnumerable<DocumentViewModel> Documents { get; set; }
 
         public Dictionary<string, string> Resource {  get; set; }
     }

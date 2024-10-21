@@ -94,7 +94,7 @@ public class HomeController : Controller
 
     public IActionResult Dashboard()
     {
-        return View();
+        return View(_resourceServices.GetAllResources());
     }
     public IActionResult Employee()
     {
@@ -250,6 +250,7 @@ public class HomeController : Controller
                 DocumentNo = model.DocumentNo,
                 Date = model.Date,
                 BorrowersName = model.BorrowersName,
+                BorrowerEmail= model.BorrowerEmail,
                 SellersName = model.SellersName,
                 DocumentType = model.DocumentType,
                 PropertyDetails = model.PropertyDetails,
@@ -321,19 +322,32 @@ public class HomeController : Controller
        
         return View();
     }
+
     [HttpGet]
     public IActionResult GetDocumentDtl()
     {
+        var resources = _resourceServices.GetAllResources();
         var detail = _documentServices.GetAllDocuments();
-        return View(detail);
+        var model = new ResourceDocumentViewModel
+        {
+            Resource = resources,
+            Documents = detail,
+        };
+        return View(model);
     }
 
     [HttpGet]
     public IActionResult DueDateFollowDtl()
     {
+        var resources = _resourceServices.GetAllResources();
         //var TodayDate = DateOnly.FromDateTime(DateTime.Now);
         var DueDate = _documentServices.GetAllDocuments().Where(d => d.Date == DateOnly.FromDateTime(DateTime.Today.AddDays(-30)));
-        return View(DueDate);
+        var model = new ResourceDocumentViewModel
+        {
+            Resource = resources,
+            Documents = DueDate,
+        };
+        return View(model);
     }
 
     public IActionResult FollowPDF(int id)

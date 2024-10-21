@@ -201,6 +201,9 @@
   <data name="Entry Details in Revenue Record" xml:space="preserve">
     <value>Entry Details in Revenue Record</value>
   </data>
+  <data name="Follow" xml:space="preserve">
+    <value>Follow</value>
+  </data>
   <data name="Gift" xml:space="preserve">
     <value>Gift</value>
   </data>

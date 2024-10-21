@@ -42,14 +42,14 @@
             <div class="d-flex flex-column  flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;height:600px;">
                 <a href="https://localhost:7037/home/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                     
-                    <span class="fs-4">CHALAN Reminder</span>
+                    <span class="fs-4">K B Chauhanr</span>
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
                         <a href="https://localhost:7037/home/GetDocumentDtl" class="nav-link active" aria-current="page">
                             <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                            <i class="fa-solid fa-user-plus fa-xl" style="color: #ffffff;margin-right: 0.7rem;"></i></i>Follow
+                            <i class="fa-solid fa-user-plus fa-xl" style="color: #ffffff;margin-right: 0.7rem;"></i></i>@Model.Resource["Follow"]
                         </a>
                     </li>
                     <li class="nav-item">
@@ -71,7 +71,7 @@
     <div class="rightSide">
         <header>
             <h4 style="padding: 1px;">
-                Follow
+                @Model.Resource["Follow"]
             </h4>
         </header>
         <div class="page">
@@ -175,13 +175,13 @@
                                     <div class="col m-3">
                                         <div class="rado" style="display:flex; margin-top:30px;">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="DharaCenter" value="@Model.Resource["Complete"]" id="DharaCenter1">
+                                                <input class="form-check-input" type="radio" name="DharaCenter" value="@Model.Resource["Complete"]" id="DharaCenter1" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.DharaCenter == "Complete" ? "checked" : "")>
                                                 <label class="form-check-label" for="ActCenter1">
                                                     @Model.Resource["Complete"]
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="DharaCenter" value="@Model.Resource["Remaining"]" id="DharaCenter2">
+                                                <input class="form-check-input" type="radio" name="DharaCenter" value="@Model.Resource["Remaining"]" id="DharaCenter2" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.DharaCenter == "Remaining" ? "checked" : "")>
                                                 <label class="form-check-label" for="DharaCenter2">
                                                     @Model.Resource["Remaining"]
                                                 </label>
@@ -203,13 +203,13 @@
                                     <div class="col">
                                         <div class="rado" style="display:flex; margin-top:30px;">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="CitySurvey" value="@Model.Resource["Complete"]" id="CitySurvey1">
+                                                <input class="form-check-input" type="radio" name="CitySurvey" value="@Model.Resource["Complete"]" id="CitySurvey1" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.CitySurvey == "Complete" ? "checked" : "")>
                                                 <label class="form-check-label" for="CitySurvey1">
                                                     @Model.Resource["Complete"]
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="CitySurvey" value="@Model.Resource["Remaining"]" id="CitySurvey2">
+                                                <input class="form-check-input" type="radio" name="CitySurvey" value="@Model.Resource["Remaining"]" id="CitySurvey2" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.CitySurvey == "Remaining" ? "checked" : "")>
                                                 <label class="form-check-label" for="CitySurvey2">
                                                     @Model.Resource["Remaining"]
                                                 </label>
@@ -226,13 +226,13 @@
                                     <div class="col">
                                         <div class="rado" style="display:flex;">
                                             <div class="form-check ">
-                                                <input class="form-check-input" type="radio" name="CityTalati" value="@Model.Resource["Complete"]" id="CityTalati1">
+                                                <input class="form-check-input" type="radio" name="CityTalati" value="@Model.Resource["Complete"]" id="CityTalati1" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.CityTalati == "Complete" ? "checked" : "")>
                                                 <label class="form-check-label" for="CityTalati1">
                                                     @Model.Resource["Complete"]
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="CityTalati" value="@Model.Resource["Remaining"]" id="CityTalati2">
+                                                <input class="form-check-input" type="radio" name="CityTalati" value="@Model.Resource["Remaining"]" id="CityTalati2" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.CityTalati == "Remaining" ? "checked" : "")>
                                                 <label class="form-check-label" for="CityTalati2">
                                                     @Model.Resource["Remaining"]
                                                 </label>
@@ -249,13 +249,13 @@
                                     <div class="col">
                                         <div class="rado" style="display:flex;">
                                             <div class="form-check ">
-                                                <input class="form-check-input" type="radio" name="GramPanchayat" value="@Model.Resource["Complete"]" id="GramPanchayat1">
+                                                <input class="form-check-input" type="radio" name="GramPanchayat" value="@Model.Resource["Complete"]" id="GramPanchayat1" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.GramPanchayat == "Complete" ? "checked" : "")>
                                                 <label class="form-check-label" for="GramPanchayat1">
                                                     @Model.Resource["Complete"]
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="GramPanchayat" value="@Model.Resource["Remaining"]" id="GramPanchayat2">
+                                                <input class="form-check-input" type="radio" name="GramPanchayat" value="@Model.Resource["Remaining"]" id="GramPanchayat2" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.GramPanchayat == "Remaining" ? "checked" : "")>
                                                 <label class="form-check-label" for="GramPanchayat2">
                                                     @Model.Resource["Remaining"]
                                                 </label>
@@ -277,13 +277,13 @@
                             <div class="col">
                                 <div class="rado" style="display:flex;margin-left:-32px">
                                     <div class="form-check ">
-                                        <input class="form-check-input" type="radio" name="DocumentPayment" value="@Model.Resource["Complete"]" id="DocumentPayment1">
+                                        <input class="form-check-input" type="radio" name="DocumentPayment" value="@Model.Resource["Complete"]" id="DocumentPayment1" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.DocumentPayment == "Complete" ? "checked" : "")>
                                         <label class="form-check-label" for="DocumentPayment1">
                                             @Model.Resource["Complete"]
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="DocumentPayment" value="@Model.Resource["Remaining"]" id="DocumentPayment2">
+                                        <input class="form-check-input" type="radio" name="DocumentPayment" value="@Model.Resource["Remaining"]" id="DocumentPayment2" @(Model.Document != null && Model.Document.Id != 0 && Model.Document.DocumentPayment == "Remaining" ? "checked" : "")>
                                         <label class="form-check-label" for="DocumentPayment2">
                                             @Model.Resource["Remaining"]
                                         </label>
