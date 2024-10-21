@@ -81,7 +81,16 @@
         <a asp-action="Quotation" asp-controller="home"><button class="btn btn-primary" style="font-size:small;">ADD  <i class="fa-solid fa-plus" style="color: #ffffff;"></i></button></a>
         <a asp-action="DueDateQuotationDtl" asp-controller="home"><button class="btn btn-primary" style="font-size:small;">Show DueDate <i class="fa-solid fa-filter" style="color: #ffffff;"></i></button></a>
         <a asp-action="GetQuotationlDtl" asp-controller="home"><button class="btn btn-primary" style="width:70px;font-size:small">All</button></a>
-        <table class="table table-borded">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-inline smallsize" style=" display: flex;">
+                    <input type="text" onkeyup="Search()" class="form-control smallsize" id="searchtext" placeholder="Search.." style="margin:10px 0px -10px 0px;">
+                    <button id="search"  class="btn" style="margin-left: -40px"><i class="fa-solid fa-magnifying-glass" style="color: #74C0FC;"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-borded" id="tabledata">
             <thead>
                 <tr>
                     <th class="">Survey Number</th>
@@ -100,6 +109,7 @@
                         <td>@dtl.SurveyNo</td>
                         <td>@dtl.Name</td>
                         <td>@(dtl.App_Date.HasValue? dtl.App_Date.Value.ToString("dd MMM yyyy") : "")</td>
+                        <td><a asp-action="QuotationPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-left:15px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
                         <td><button asp-route-id="@dtl.Id" id="view" onclick="GetInvoice(@dtl.Id)" type="button" style="width:-7px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-content="New content loaded!"><i class="fa-solid fa-file-invoice" style="color: #ffffff;"></i></button></td>
                         <td><a asp-action="QuotationPDF" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style="width:105px; height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small">Download  <i class="fa-solid fa-download" style="color: #ffffff;"></i></button></a></td>
                         <td><a asp-action="Quotation" asp-controller="home" asp-route-id="@dtl.Id"><button class="btn btn-primary" style=" height:35px; margin-top:-7px; margin-bottom:-7px;font-size:small"><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></button></a></td>
@@ -109,6 +119,52 @@
             </tbody>
         </table>
     </div>
+    <script>
+        function Search() {
+
+            $("#tabledata thead").show();
+            $("#getdetails").html("");
+            var searchtext = $('#searchtext').val();
+            $.ajax({
+                url: '/Home/searchquo',
+                dataType: "json",
+                data: { searchtext },
+                success: function (result, details) {
+                    console.log(result.length);
+                    console.log(searchtext);
+                    $("#tabledata tbody").empty();
+                    if (searchtext == null) {
+
+                        $("#tabledata tbody").append(details);
+                    }
+                    if (result.length == 0) {
+
+                        $("#tabledata thead").hide();
+                        $("#getdetails").html("Data does not exist");
+                    }
+
+                    $.each(result, function (i,dtl) {
+                        var dates = new Date(dtl.app_Date);
+                        var formattedDate = new Intl.DateTimeFormat('en-GB', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric'
+                        }).format(dates);
+                        var row = "<tr>"
+                            + "<td>" + dtl.surveyNo + "</td>"
+                            + "<td>" + dtl.name + "</td>"
+                            + "<td>" + formattedDate + "</td>"
+                            + "<td>" + "<a href='https://localhost:7037/home/QuotationPDF/ " + dtl.id + "'><button class='btn btn-primary' style = 'height: 35px; margin-top:-7px; margin-left:15px; margin-bottom:-7px; font-size:small'><i class='fa-solid fa-download' style = 'color:#ffffff;'></i></button ></a>" + "</td>"
+                            + "<td>" + "<a href='https://localhost:7037/home/Quotation/ " + dtl.id + "'><button class='btn btn-primary' style='height: 35px; margin-top: -7px; margin-bottom:-7px; font-size:small'><i class='fa-regular fa-pen-to-square' style='color:#ffffff;'></i></button></a>" + "</td>"
+                            + "<td>" + "<a href='https://localhost:7037/home/DeleteQuotation/ " + dtl.id + "'><button class='btn btn-danger' style='height:35px; margin-top:-7px; margin-right:160px; margin-bottom:-7px; font-size:small'><i class='fa-solid fa-trash-can' style='color:#ffffff;'></i></button></a>" + "</td>"
+                        $("#tabledata tbody").append(row);
+                    });
+
+                }
+            });
+        }
+    </script>
+
    
     <div class="container mt-5">
         <!-- Modal -->
