@@ -463,9 +463,15 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult DueDateQuotationDtl()
     {
+        var resources = _resourceServices.GetAllResources();
         //var TodayDate = DateOnly.FromDateTime(DateTime.Now);
         var DueDate = _quotationServices.GetAllQuotation().Where(d => d.App_Date == DateOnly.FromDateTime(DateTime.Today.AddDays(-30)));
-        return View(DueDate);
+        var model = new ResorcesQuotationViewModel
+        {
+            Resource = resources,
+            Quotations = DueDate,
+        };
+        return View(model);
     }
 
     public IActionResult QuotationPDF(int id)
