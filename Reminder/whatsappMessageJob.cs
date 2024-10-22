@@ -28,8 +28,8 @@ namespace Reminder
         public async Task Execute(IJobExecutionContext context)
         {
 
-            const string accountSid = "";
-            const string token = "";
+            const string accountSid = "AC14d03dd38a0b8438cc434d3ca677ffe6";
+            const string token = "faf2e0264aa20b1a23679449b5778f1e";
 
             TwilioClient.Init(accountSid, token);
             var DueDate = _documentServices.GetAllDocuments().Where(d => d.Date == DateOnly.FromDateTime(DateTime.Today.AddDays(-30)));
@@ -47,11 +47,11 @@ namespace Reminder
                 }
                 Console.WriteLine(message);
                 Console.WriteLine();
-                //var mess = MessageResource.Create(
-                    // body: message,
-                     //from: new Twilio.Types.PhoneNumber("whatsapp:+14155238886"),
-                     //to: new Twilio.Types.PhoneNumber("whatsapp:+919106145603"));
-               // Console.WriteLine(mess.Body);
+                var mess = MessageResource.Create(
+                     body: message,
+                     from: new Twilio.Types.PhoneNumber("whatsapp:+14155238886"),
+                     to: new Twilio.Types.PhoneNumber("whatsapp:+919106145603"));
+                Console.WriteLine(mess.Body);
 
             }
             Console.ReadLine();
