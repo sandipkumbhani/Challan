@@ -9,6 +9,7 @@ namespace Domain.Model
     public class ResorcesQuotationViewModel
     {
         public QuotationViewModel Quotaion { get; set; }
+        public IEnumerable<QuotationViewModel> Quotations { get; set; }
         public Dictionary<string, string> Resource { get; set; }
     }
 }

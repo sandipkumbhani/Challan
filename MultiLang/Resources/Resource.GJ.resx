@@ -189,6 +189,9 @@
   <data name="Document Payment" xml:space="preserve">
     <value>દસ્તાવેજ પેમેન્ટ</value>
   </data>
+  <data name="Quotation" xml:space="preserve">
+    <value>NA દસ્તાવેજ </value>
+  </data>
   <data name="Document Type" xml:space="preserve">
     <value>દસ્તાવેજનો પ્રકાર</value>
   </data>
