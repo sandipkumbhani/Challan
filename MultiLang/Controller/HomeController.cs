@@ -487,6 +487,8 @@ public class HomeController : Controller
 
         return new ViewAsPdf(model);
     }
+    [HttpGet]
+    [AllowAnonymous]
     public IActionResult ChangeLanguage(string lang)
     {
         if (!string.IsNullOrEmpty(lang))
